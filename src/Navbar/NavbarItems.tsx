@@ -18,7 +18,7 @@
 
 import React from 'react';
 import { NavbarItem } from '../types';
-import { NavLink, useLocation } from 'react-router-dom';
+import { matchPath, NavLink, useLocation } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 
 interface Props {
@@ -26,6 +26,7 @@ interface Props {
     items: Array<NavbarItem>;
 }
 
+// TODO delete this if not needed
 const isActive = (pathname: string, path: string, exact: boolean = false): boolean =>
     exact ? pathname === path : pathname !== '/' && pathname.startsWith(path);
 
@@ -40,7 +41,10 @@ const NavbarItems = (props: Props) => {
         <>
             {
                 props.items.map((item, index) => {
-                    const active = isActive(location.pathname, item.to, item.exact);
+                    const active = matchPath(location.pathname, {
+                        path: item.to,
+                        exact: item.exact
+                    });
 
                     return (
                         <NavLink
