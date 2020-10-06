@@ -1,0 +1,9 @@
+{
+  "name": "@craigmiller160/material-ui-common",
+  "version": "1.0.0-beta",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.0.3"
+  }
+}
