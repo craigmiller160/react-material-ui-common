@@ -1,0 +1,12 @@
+.NavBar {
+  .NavLink {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .left {
+    margin-left: 1rem;
+    flex: 1;
+    flex-direction: row;
+  }
+}
