@@ -17,7 +17,9 @@
  */
 
 import React, { useState } from 'react';
-import { AppBar, useMediaQuery, useTheme } from '@material-ui/core';
+import { AppBar, Button, IconButton, Typography, useMediaQuery, useTheme } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+import { NavLink } from 'react-router-dom';
 import './NavBar.scss';
 
 interface Props {
@@ -25,6 +27,7 @@ interface Props {
     hasChecked: boolean; // TODO refactor this
     login: () => void;
     logout: () => void;
+    title: string;
 }
 
 interface State {
@@ -59,8 +62,40 @@ const Navbar = (props: Props) => {
     return (
         <>
             <AppBar position="static" className="NavBar">
+                {
+                    !isNotPhone &&
+                    <IconButton edge="start" color="inherit" onClick={ handleMenuOpen }>
+                        <MenuIcon />
+                    </IconButton>
+                }
+                <Button variant="text" color="inherit">
+                    <NavLink to="/" exact className="NavLink">
+                        <Typography variant="h6" noWrap>{ props.title }</Typography>
+                    </NavLink>
+                </Button>
+                {
+                    isNotPhone &&
+                    <>
+                        <div className="left">
 
+                        </div>
+                        <div>
+                            {
+                                props.hasChecked &&
+                                <Button
+                                    variant="text"
+                                    color="inherit"
+                                    onClick={ authAction }
+                                >
+                                    { authBtnText }
+                                </Button>
+                            }
+                        </div>
+                    </>
+                }
             </AppBar>
         </>
     );
 };
+
+export default NavLink;
