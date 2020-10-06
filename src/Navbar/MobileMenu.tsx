@@ -31,9 +31,8 @@ interface Props {
     isAuth: boolean;
     title: string;
     items: Array<NavbarItem>;
+    showAuthBtn: boolean;
 }
-
-// TODO what about showAuthBtn?
 
 const useStyles = makeStyles((theme) => ({
     MenuPrimary: {
@@ -98,12 +97,15 @@ const MobileMenu = (props: Props) => {
                     );
                 })
             }
-            <ListItem
-                className="item"
-                onClick={ authButtonClick }
-            >
-                <ListItemText className="NavLink">{ props.authBtnText }</ListItemText>
-            </ListItem>
+            {
+                props.showAuthBtn &&
+                <ListItem
+                    className="item"
+                    onClick={ authButtonClick }
+                >
+                    <ListItemText className="NavLink">{ props.authBtnText }</ListItemText>
+                </ListItem>
+            }
         </Drawer>
     );
 };
