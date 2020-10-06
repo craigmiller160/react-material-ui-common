@@ -21,21 +21,21 @@ import { AppBar, Button, IconButton, Typography, useMediaQuery, useTheme } from 
 import MenuIcon from '@material-ui/icons/Menu';
 import { NavLink } from 'react-router-dom';
 import './NavBar.scss';
+import NavbarItems from './NavbarItems';
+import { NavbarItem } from '../types';
 
 interface Props {
     isAuth: boolean;
-    hasChecked: boolean; // TODO refactor this
+    showAuthBtn: boolean;
     login: () => void;
     logout: () => void;
     title: string;
+    items: Array<NavbarItem>;
 }
 
 interface State {
     menuOpen: boolean;
 }
-
-const isActive = (pathname: string, path: string, exact: boolean = false): boolean =>
-    exact ? pathname === path : pathname !== '/' && pathname.startsWith(path);
 
 const Navbar = (props: Props) => {
     const theme = useTheme();
@@ -77,11 +77,14 @@ const Navbar = (props: Props) => {
                     isNotPhone &&
                     <>
                         <div className="left">
-
+                            <NavbarItems
+                                isAuth={ props.isAuth }
+                                items={ props.items }
+                            />
                         </div>
                         <div>
                             {
-                                props.hasChecked &&
+                                props.showAuthBtn &&
                                 <Button
                                     variant="text"
                                     color="inherit"

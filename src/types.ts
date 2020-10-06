@@ -19,4 +19,5 @@
 export interface NavbarItem {
     to: string;
     text: string;
+    exact?: boolean;
 }
