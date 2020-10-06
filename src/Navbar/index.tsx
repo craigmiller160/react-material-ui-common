@@ -23,6 +23,7 @@ import { NavLink } from 'react-router-dom';
 import './NavBar.scss';
 import NavbarItems from './NavbarItems';
 import { NavbarItem } from '../types';
+import MobileMenu from './MobileMenu';
 
 interface Props {
     isAuth: boolean;
@@ -97,6 +98,16 @@ const Navbar = (props: Props) => {
                     </>
                 }
             </AppBar>
+            <MobileMenu
+                menuOpen={ state.menuOpen }
+                handleMenuClose={ handleMenuClose }
+                authAction={ authAction }
+                authBtnText={ authBtnText }
+                isAuth={ props.isAuth }
+                title={ props.title }
+                items={ props.items }
+                showAuthBtn={ props.showAuthBtn }
+            />
         </>
     );
 };
