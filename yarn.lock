@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@craigmiller160/eslint-config-cra-extension@^1.1.0":
+  version "1.1.0"
+  resolved "http://localhost:30000/@craigmiller160%2feslint-config-cra-extension/-/eslint-config-cra-extension-1.1.0.tgz#028e4b2648f8f630882d7588b844ef73bb63cc82"
+  integrity sha512-cs3O805HdEC4QP+9HfI6BehGkcMULaMaHJyENtloYWs8NiDVEjEePSxhtBGRH4eGhuX860lVTYYTB20sR2pJDQ==
+
 typescript@^4.0.3:
   version "4.0.3"
   resolved "http://localhost:30000/typescript/-/typescript-4.0.3.tgz#153bbd468ef07725c1df9c77e8b453f8d36abba5"
