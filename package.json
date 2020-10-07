@@ -12,6 +12,7 @@
     "typescript": "^4.0.3"
   },
   "scripts": {
+    "build": "node scripts/clean.js && tsc",
     "lint": "eslint -c eslint.config.js src --no-error-on-unmatched-pattern"
   },
   "files": [
