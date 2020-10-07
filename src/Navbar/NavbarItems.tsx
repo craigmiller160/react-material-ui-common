@@ -26,10 +26,6 @@ interface Props {
     items: Array<NavbarItem>;
 }
 
-// TODO delete this if not needed
-const isActive = (pathname: string, path: string, exact: boolean = false): boolean =>
-    exact ? pathname === path : pathname !== '/' && pathname.startsWith(path);
-
 const NavbarItems = (props: Props) => {
     const location = useLocation();
 

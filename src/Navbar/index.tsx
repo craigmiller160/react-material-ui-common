@@ -112,4 +112,4 @@ const Navbar = (props: Props) => {
     );
 };
 
-export default NavLink;
+export default Navbar;
