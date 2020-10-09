@@ -31,12 +31,12 @@ interface PublicProps {
     title: string;
 }
 
-const Header = ({ title, variant }: HeaderProps) => (
+const Index = ({ title, variant }: HeaderProps) => (
     <div className={ classes.Header }>
         <Typography variant={ variant }>{ title }</Typography>
         <Divider />
     </div>
 );
 
-export const PageHeader = ({ title }: PublicProps) => <Header title={ title } variant="h3" />;
-export const SectionHeader = ({ title }: PublicProps) => <Header title={ title } variant="h5" />;
+export const PageHeader = ({ title }: PublicProps) => <Index title={ title } variant="h3" />;
+export const SectionHeader = ({ title }: PublicProps) => <Index title={ title } variant="h5" />;

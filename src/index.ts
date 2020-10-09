@@ -17,4 +17,5 @@
  */
 
 export { default as Navbar } from './Navbar';
+export { SectionHeader, PageHeader } from './Header';
 export type { NavbarItem } from './types';
