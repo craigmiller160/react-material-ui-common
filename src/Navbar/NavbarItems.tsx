@@ -45,7 +45,7 @@ const NavbarItems = (props: Props) => {
 
                     return (
                         <NavLink
-                            id={ `navbar-item-${item.to}` }
+                            id={ `navbar-item-${item.to.replaceAll(/^\//, '').replaceAll('/', '-')}` }
                             key={ index }
                             to={ item.to }
                             className={ props.navLinkClass }

@@ -85,7 +85,7 @@ const MobileMenu = (props: Props) => {
 
                     return (
                         <ListItem
-                            id={ `navbar-mobile-item-${item.to}` }
+                            id={ `navbar-mobile-item-${item.to.replaceAll(/^\//, '').replaceAll('/', '-')}` }
                             key={ index }
                             className={ itemClass }
                             onClick={ props.handleMenuClose }
