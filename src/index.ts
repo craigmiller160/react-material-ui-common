@@ -24,5 +24,9 @@ export { default as Tabs } from './Tabs';
 export { ConfirmDialog, BaseDialog } from './Dialog';
 export { default as ReduxAlert } from './ReduxAlert';
 export const reduxAlertReducer = alertSlice.reducer;
-export const { showErrorAlert, showSuccessAlert, hideAlert } = alertSlice.actions;
+export const {
+    showErrorAlert: showErrorReduxAlert,
+    showSuccessAlert: showSuccessReduxAlert,
+    hideAlert: hideReduxAlert
+} = alertSlice.actions;
 export type { NavbarItem, TabConfig, DialogAction } from './types';
