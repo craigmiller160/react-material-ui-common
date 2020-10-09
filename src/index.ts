@@ -16,8 +16,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import alertSlice from './ReduxAlert/slice';
+
 export { default as Navbar } from './Navbar';
 export { SectionHeader, PageHeader } from './Header';
 export { default as Tabs } from './Tabs';
 export { ConfirmDialog, BaseDialog } from './Dialog';
+export { default as ReduxAlert } from './ReduxAlert';
+export const alertReducer = alertSlice.reducer;
+export const { showErrorAlert, showSuccessAlert, hideAlert } = alertSlice.actions;
 export type { NavbarItem, TabConfig, DialogAction } from './types';
