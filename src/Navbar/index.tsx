@@ -71,7 +71,7 @@ const Navbar = (props: Props) => {
                         </IconButton>
                     }
                     <Button variant="text" color="inherit">
-                        <NavLink to="/" exact className={ styles.NavLink }>
+                        <NavLink id="navbar-title-btn" to="/" exact className={ styles.NavLink }>
                             <Typography variant="h6" noWrap>{ props.title }</Typography>
                         </NavLink>
                     </Button>
@@ -89,6 +89,7 @@ const Navbar = (props: Props) => {
                                 {
                                     props.showAuthBtn &&
                                     <Button
+                                        id="navbar-auth-btn"
                                         variant="text"
                                         color="inherit"
                                         onClick={ authAction }

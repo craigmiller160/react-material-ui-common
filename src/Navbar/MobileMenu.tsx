@@ -59,6 +59,7 @@ const MobileMenu = (props: Props) => {
             onClose={ props.handleMenuClose }
         >
             <NavLink
+                id="navbar-mobile-title-btn"
                 to="/"
                 exact
                 className={ styles.NavLink }
@@ -84,6 +85,7 @@ const MobileMenu = (props: Props) => {
 
                     return (
                         <ListItem
+                            id={ `navbar-mobile-item-${item.to}` }
                             key={ index }
                             className={ itemClass }
                             onClick={ props.handleMenuClose }
@@ -101,6 +103,7 @@ const MobileMenu = (props: Props) => {
             {
                 props.showAuthBtn &&
                 <ListItem
+                    id="navbar-mobile-auth-btn"
                     className={ styles.item }
                     onClick={ authButtonClick }
                 >

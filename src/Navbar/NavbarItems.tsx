@@ -45,6 +45,7 @@ const NavbarItems = (props: Props) => {
 
                     return (
                         <NavLink
+                            id={ `navbar-item-${item.to}` }
                             key={ index }
                             to={ item.to }
                             className={ props.navLinkClass }
