@@ -73,7 +73,7 @@ const MobileMenu = (props: Props) => {
                 </Typography>
             </NavLink>
             {
-                props.isAuth && props.items.map((item) => {
+                props.isAuth && props.items.map((item, index) => {
                     const isMatch: boolean = !!matchPath(location.pathname, {
                         path: item.to,
                         exact: item.exact
@@ -84,6 +84,7 @@ const MobileMenu = (props: Props) => {
 
                     return (
                         <ListItem
+                            key={ index }
                             className={ itemClass }
                             onClick={ props.handleMenuClose }
                         >
