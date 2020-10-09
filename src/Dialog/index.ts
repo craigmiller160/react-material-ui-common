@@ -16,4 +16,5 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+export { default as BaseDialog } from './BaseDialog';
 export { default as ConfirmDialog } from './ConfirmDialog';
