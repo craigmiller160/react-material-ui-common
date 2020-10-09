@@ -16,8 +16,16 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { ComponentType } from 'react';
+
 export interface NavbarItem {
     to: string;
     text: string;
     exact?: boolean;
+}
+
+export interface TabConfig {
+    label: string;
+    path: string;
+    component: ComponentType<any>;
 }

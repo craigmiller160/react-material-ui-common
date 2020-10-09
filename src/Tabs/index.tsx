@@ -20,14 +20,9 @@ import React, { ChangeEvent, ComponentType, useState } from 'react';
 import MuiTabs from '@material-ui/core/Tabs';
 import { Redirect, Route, Switch, useHistory, useLocation, useRouteMatch } from 'react-router';
 import { Tab } from '@material-ui/core';
+import { TabConfig } from '../types';
 
 // Only designed at the moment to work with tabs at the end of the react router path
-
-export interface TabConfig {
-    label: string;
-    path: string;
-    component: ComponentType<any>;
-}
 
 interface Props {
     tabs: TabConfig[]
