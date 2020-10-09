@@ -25,16 +25,20 @@ import { Variant } from '@material-ui/core/styles/createTypography';
 interface HeaderProps {
     title: string;
     variant?: Variant;
+    noDivider?: boolean;
 }
 
 interface PublicProps {
     title: string;
 }
 
-const Index = ({ title, variant }: HeaderProps) => (
+const Index = ({ title, variant, noDivider }: HeaderProps) => (
     <div className={ classes.Header }>
         <Typography variant={ variant }>{ title }</Typography>
-        <Divider />
+        {
+            !noDivider &&
+            <Divider />
+        }
     </div>
 );
 
