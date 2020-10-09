@@ -32,7 +32,7 @@ const capitalize = (text: string) => {
     return `${firstLetter}${text.substring(1)}`;
 };
 
-const Alert = () => {
+const ReduxAlert = () => {
     const dispatch = useDispatch();
     const alertState = useSelector<RootState,AlertState>((state) => state.alert, shallowEqual);
     return (
@@ -48,4 +48,4 @@ const Alert = () => {
     );
 };
 
-export default Alert;
+export default ReduxAlert;
