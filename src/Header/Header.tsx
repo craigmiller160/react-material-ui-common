@@ -18,7 +18,7 @@
 
 import React from 'react';
 import Divider from '@material-ui/core/Divider';
-import classes from './Header.scss';
+import classes from './Header.module.scss';
 import Typography from '@material-ui/core/Typography';
 import { Variant } from '@material-ui/core/styles/createTypography';
 
