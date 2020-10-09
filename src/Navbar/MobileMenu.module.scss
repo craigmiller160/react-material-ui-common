@@ -23,7 +23,7 @@
 }
 
 .MobileMenu {
-  .MuiDrawer-paper {
+  :global(.MuiDrawer-paper) {
     width: 20rem;
   }
 

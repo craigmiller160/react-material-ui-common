@@ -24,6 +24,7 @@ import { Button } from '@material-ui/core';
 interface Props {
     isAuth: boolean;
     items: Array<NavbarItem>;
+    navLinkClass: string;
 }
 
 const NavbarItems = (props: Props) => {
@@ -46,7 +47,7 @@ const NavbarItems = (props: Props) => {
                         <NavLink
                             key={ index }
                             to={ item.to }
-                            className="NavLink"
+                            className={ props.navLinkClass }
                         >
                             <Button
                                 variant={ active ? 'contained' : 'text' }

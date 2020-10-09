@@ -20,7 +20,7 @@ import React, { useState } from 'react';
 import { AppBar, Button, IconButton, Toolbar, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { NavLink } from 'react-router-dom';
-import './NavBar.scss';
+import styles from './NavBar.module.scss';
 import NavbarItems from './NavbarItems';
 import { NavbarItem } from '../types';
 import MobileMenu from './MobileMenu';
@@ -62,7 +62,7 @@ const Navbar = (props: Props) => {
 
     return (
         <>
-            <AppBar position="static" className="NavBar">
+            <AppBar position="static" className={ styles.NavBar }>
                 <Toolbar>
                     {
                         !isNotPhone &&
@@ -71,17 +71,18 @@ const Navbar = (props: Props) => {
                         </IconButton>
                     }
                     <Button variant="text" color="inherit">
-                        <NavLink to="/" exact className="NavLink">
+                        <NavLink to="/" exact className={ styles.NavLink }>
                             <Typography variant="h6" noWrap>{ props.title }</Typography>
                         </NavLink>
                     </Button>
                     {
                         isNotPhone &&
                         <>
-                            <div className="left">
+                            <div className={ styles.left }>
                                 <NavbarItems
                                     isAuth={ props.isAuth }
                                     items={ props.items }
+                                    navLinkClass={ styles.NavLink }
                                 />
                             </div>
                             <div>

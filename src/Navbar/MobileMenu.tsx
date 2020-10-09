@@ -21,7 +21,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { NavbarItem } from '../types';
 import { Drawer, ListItem, ListItemText, Typography } from '@material-ui/core';
 import { matchPath, NavLink, useLocation } from 'react-router-dom';
-import './MobileMenu.scss';
+import styles from './MobileMenu.module.scss';
 
 interface Props {
     menuOpen: boolean;
@@ -54,17 +54,17 @@ const MobileMenu = (props: Props) => {
             classes={ {
                 paper: classes.MenuPrimary
             } }
-            className="MobileMenu"
+            className={ styles.MobileMenu }
             open={ props.menuOpen }
             onClose={ props.handleMenuClose }
         >
             <NavLink
                 to="/"
                 exact
-                className="NavLink"
+                className={ styles.NavLink }
             >
                 <Typography
-                    className="title"
+                    className={ styles.title }
                     variant="h6"
                     noWrap
                     onClick={ props.handleMenuClose }
@@ -80,7 +80,7 @@ const MobileMenu = (props: Props) => {
                     });
 
                     const activeClass = isMatch ? ' active' : '';
-                    const itemClass = `item ${activeClass}`;
+                    const itemClass = `${styles.item} ${activeClass}`;
 
                     return (
                         <ListItem
@@ -89,7 +89,7 @@ const MobileMenu = (props: Props) => {
                         >
                             <NavLink
                                 to={ item.to }
-                                className="NavLink"
+                                className={ styles.NavLink }
                             >
                                 <ListItemText>{ item.text }</ListItemText>
                             </NavLink>
@@ -100,10 +100,10 @@ const MobileMenu = (props: Props) => {
             {
                 props.showAuthBtn &&
                 <ListItem
-                    className="item"
+                    className={ styles.item }
                     onClick={ authButtonClick }
                 >
-                    <ListItemText className="NavLink">{ props.authBtnText }</ListItemText>
+                    <ListItemText className={ styles.NavLink }>{ props.authBtnText }</ListItemText>
                 </ListItem>
             }
         </Drawer>
