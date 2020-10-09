@@ -19,4 +19,5 @@
 export { default as Navbar } from './Navbar';
 export { SectionHeader, PageHeader } from './Header';
 export { default as Tabs } from './Tabs';
+export { ConfirmDialog } from './Dialog';
 export type { NavbarItem, TabConfig, DialogAction } from './types';
