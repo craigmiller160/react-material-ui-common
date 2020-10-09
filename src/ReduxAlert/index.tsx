@@ -23,13 +23,11 @@ import alertSlice, { AlertState } from './slice';
 import AlertTitle from '@material-ui/lab/AlertTitle';
 import Collapse from '@material-ui/core/Collapse';
 
-interface RootState {
-    alert: AlertState
-}
-
 interface Props {
     alertStateName?: string;
 }
+
+type RootState = { [key: string]: AlertState };
 
 const capitalize = (text: string) => {
     const firstLetter = text.substring(0, 1).toUpperCase();
@@ -39,7 +37,7 @@ const capitalize = (text: string) => {
 const ReduxAlert = (props: Props) => {
     const alertStateName: string = props.alertStateName ?? 'alert';
     const dispatch = useDispatch();
-    const alertState = useSelector<{ [key: string]: AlertState },AlertState>((state) => state[alertStateName], shallowEqual);
+    const alertState = useSelector<RootState,AlertState>((state) => state[alertStateName], shallowEqual);
     return (
         <Collapse in={ alertState.show }>
             <MuiAlert

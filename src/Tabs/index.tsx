@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React, { ChangeEvent, ComponentType, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import MuiTabs from '@material-ui/core/Tabs';
 import { Redirect, Route, Switch, useHistory, useLocation, useRouteMatch } from 'react-router';
 import { Tab } from '@material-ui/core';
