@@ -30,6 +30,7 @@ interface HeaderProps {
 
 interface PublicProps {
     title: string;
+    noDivider?: boolean;
 }
 
 const Index = ({ title, variant, noDivider }: HeaderProps) => (
@@ -42,5 +43,5 @@ const Index = ({ title, variant, noDivider }: HeaderProps) => (
     </div>
 );
 
-export const PageHeader = ({ title }: PublicProps) => <Index title={ title } variant="h3" />;
-export const SectionHeader = ({ title }: PublicProps) => <Index title={ title } variant="h5" />;
+export const PageHeader = (props: PublicProps) => <Index { ...props } variant="h3" />;
+export const SectionHeader = (props: PublicProps) => <Index { ...props } variant="h5" />;
