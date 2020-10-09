@@ -17,7 +17,7 @@
  */
 
 import React, { useState } from 'react';
-import { AppBar, Button, IconButton, Typography, useMediaQuery, useTheme } from '@material-ui/core';
+import { AppBar, Button, IconButton, Toolbar, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { NavLink } from 'react-router-dom';
 import './NavBar.scss';
@@ -63,40 +63,42 @@ const Navbar = (props: Props) => {
     return (
         <>
             <AppBar position="static" className="NavBar">
-                {
-                    !isNotPhone &&
-                    <IconButton edge="start" color="inherit" onClick={ handleMenuOpen }>
-                        <MenuIcon />
-                    </IconButton>
-                }
-                <Button variant="text" color="inherit">
-                    <NavLink to="/" exact className="NavLink">
-                        <Typography variant="h6" noWrap>{ props.title }</Typography>
-                    </NavLink>
-                </Button>
-                {
-                    isNotPhone &&
-                    <>
-                        <div className="left">
-                            <NavbarItems
-                                isAuth={ props.isAuth }
-                                items={ props.items }
-                            />
-                        </div>
-                        <div>
-                            {
-                                props.showAuthBtn &&
-                                <Button
-                                    variant="text"
-                                    color="inherit"
-                                    onClick={ authAction }
-                                >
-                                    { authBtnText }
-                                </Button>
-                            }
-                        </div>
-                    </>
-                }
+                <Toolbar>
+                    {
+                        !isNotPhone &&
+                        <IconButton edge="start" color="inherit" onClick={ handleMenuOpen }>
+                            <MenuIcon />
+                        </IconButton>
+                    }
+                    <Button variant="text" color="inherit">
+                        <NavLink to="/" exact className="NavLink">
+                            <Typography variant="h6" noWrap>{ props.title }</Typography>
+                        </NavLink>
+                    </Button>
+                    {
+                        isNotPhone &&
+                        <>
+                            <div className="left">
+                                <NavbarItems
+                                    isAuth={ props.isAuth }
+                                    items={ props.items }
+                                />
+                            </div>
+                            <div>
+                                {
+                                    props.showAuthBtn &&
+                                    <Button
+                                        variant="text"
+                                        color="inherit"
+                                        onClick={ authAction }
+                                    >
+                                        { authBtnText }
+                                    </Button>
+                                }
+                            </div>
+                        </>
+                    }
+                </Toolbar>
             </AppBar>
             <MobileMenu
                 menuOpen={ state.menuOpen }
