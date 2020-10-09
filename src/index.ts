@@ -23,6 +23,6 @@ export { SectionHeader, PageHeader } from './Header';
 export { default as Tabs } from './Tabs';
 export { ConfirmDialog, BaseDialog } from './Dialog';
 export { default as ReduxAlert } from './ReduxAlert';
-export const alertReducer = alertSlice.reducer;
+export const reduxAlertReducer = alertSlice.reducer;
 export const { showErrorAlert, showSuccessAlert, hideAlert } = alertSlice.actions;
 export type { NavbarItem, TabConfig, DialogAction } from './types';
