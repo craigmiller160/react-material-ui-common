@@ -27,14 +27,19 @@ interface RootState {
     alert: AlertState
 }
 
+interface Props {
+    alertStateName?: string;
+}
+
 const capitalize = (text: string) => {
     const firstLetter = text.substring(0, 1).toUpperCase();
     return `${firstLetter}${text.substring(1)}`;
 };
 
-const ReduxAlert = () => {
+const ReduxAlert = (props: Props) => {
+    const alertStateName: string = props.alertStateName ?? 'alert';
     const dispatch = useDispatch();
-    const alertState = useSelector<RootState,AlertState>((state) => state.alert, shallowEqual);
+    const alertState = useSelector<{ [key: string]: AlertState },AlertState>((state) => state[alertStateName], shallowEqual);
     return (
         <Collapse in={ alertState.show }>
             <MuiAlert
