@@ -24,6 +24,7 @@ import AlertTitle from '@material-ui/lab/AlertTitle';
 import Collapse from '@material-ui/core/Collapse';
 
 interface Props {
+    id?: string;
     alertStateName?: string;
 }
 
@@ -41,6 +42,7 @@ const ReduxAlert = (props: Props) => {
     return (
         <Collapse in={ alertState.show }>
             <MuiAlert
+                id={ props.id }
                 severity={ alertState.type }
                 onClose={ () => dispatch(alertSlice.actions.hideAlert()) }
             >
