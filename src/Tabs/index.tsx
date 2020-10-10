@@ -25,6 +25,7 @@ import { TabConfig } from '../types';
 // Only designed at the moment to work with tabs at the end of the react router path
 
 interface Props {
+    id?: string;
     tabs: TabConfig[]
 }
 
@@ -59,7 +60,7 @@ const Tabs = (props: Props) => {
     };
 
     return (
-        <div className="TabsContainer">
+        <div id={ props.id } className="TabsContainer">
             <MuiTabs
                 className="Tabs"
                 value={ state.selectedTab }
@@ -69,9 +70,12 @@ const Tabs = (props: Props) => {
                 onChange={ handleTabChange }
             >
                 {
-                    props.tabs.map((tab, index) => (
-                        <Tab key={ index } label={ tab.label } />
-                    ))
+                    props.tabs.map((tab, index) => {
+                        const id = tab.id ?? `tab_${index}`;
+                        return (
+                            <Tab id={ id } key={ index } label={ tab.label } />
+                        );
+                    })
                 }
             </MuiTabs>
             <Switch>
