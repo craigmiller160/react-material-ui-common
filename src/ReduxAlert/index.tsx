@@ -40,16 +40,19 @@ const ReduxAlert = (props: Props) => {
     const dispatch = useDispatch();
     const alertState = useSelector<RootState,AlertState>((state) => state[alertStateName], shallowEqual);
     return (
-        <Collapse in={ alertState.show }>
-            <MuiAlert
-                id={ props.id }
-                severity={ alertState.type }
-                onClose={ () => dispatch(alertSlice.actions.hideAlert()) }
-            >
-                <AlertTitle>{ capitalize(alertState.type) }</AlertTitle>
-                { alertState.message }
-            </MuiAlert>
-        </Collapse>
+        <div id={ `${props.id}-container` }>
+            <Collapse in={ alertState.show }>
+                <MuiAlert
+                    id={ props.id }
+                    severity={ alertState.type }
+                    onClose={ () => dispatch(alertSlice.actions.hideAlert()) }
+                >
+                    <AlertTitle id={ `${props.id}-title` }>{ capitalize(alertState.type) }</AlertTitle>
+                    <span id={ `${props.id}-message` }>{ alertState.message }</span>
+                </MuiAlert>
+            </Collapse>
+        </div>
+
     );
 };
 
