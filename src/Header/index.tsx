@@ -22,20 +22,19 @@ import classes from './Header.module.scss';
 import Typography from '@material-ui/core/Typography';
 import { Variant } from '@material-ui/core/styles/createTypography';
 
-interface HeaderProps {
-    title: string;
-    variant?: Variant;
-    noDivider?: boolean;
-}
-
 interface PublicProps {
     title: string;
     noDivider?: boolean;
+    id?: string;
 }
 
-const Index = ({ title, variant, noDivider }: HeaderProps) => (
+interface HeaderProps extends PublicProps {
+    variant?: Variant;
+}
+
+const Index = ({ title, variant, noDivider, id }: HeaderProps) => (
     <div className={ classes.Header }>
-        <Typography variant={ variant }>{ title }</Typography>
+        <Typography id={ id } variant={ variant }>{ title }</Typography>
         {
             !noDivider &&
             <Divider />
