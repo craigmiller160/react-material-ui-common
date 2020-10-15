@@ -26,6 +26,7 @@ import styles from './BaseDialog.module.scss';
 import { DialogAction } from '../../types';
 
 interface Props {
+    id?: string;
     open: boolean;
     title: string;
     actions: Array<DialogAction>;
@@ -38,6 +39,7 @@ interface Props {
 
 const BaseDialog = (props: PropsWithChildren<Props>) => {
     const {
+        id,
         open,
         title,
         children,
@@ -51,6 +53,7 @@ const BaseDialog = (props: PropsWithChildren<Props>) => {
 
     return (
         <Dialog
+            id={ id }
             open={ open }
             className={ rootClasses }
         >
@@ -60,15 +63,19 @@ const BaseDialog = (props: PropsWithChildren<Props>) => {
             </DialogContent>
             <DialogActions>
                 {
-                    actions.map((action, index) => (
-                        <Button
-                            key={ index }
-                            color="primary"
-                            onClick={ action.onClick }
-                        >
-                            { action.label }
-                        </Button>
-                    ))
+                    actions.map((action, index) => {
+                        const btnId = id ? `${id}-btn-${index}` : '';
+                        return (
+                            <Button
+                                id={ btnId }
+                                key={ index }
+                                color="primary"
+                                onClick={ action.onClick }
+                            >
+                                { action.label }
+                            </Button>
+                        );
+                    })
                 }
             </DialogActions>
         </Dialog>

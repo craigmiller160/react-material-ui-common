@@ -22,6 +22,7 @@ import BaseDialog from '../BaseDialog';
 import { DialogAction } from '../../types';
 
 interface Props {
+    id?: string;
     open: boolean;
     title: string;
     message: string;
@@ -31,6 +32,7 @@ interface Props {
 
 const ConfirmDialog = (props: Props) => {
     const {
+        id,
         open,
         title,
         message,
@@ -45,6 +47,7 @@ const ConfirmDialog = (props: Props) => {
 
     return (
         <BaseDialog
+            id={ id }
             open={ open }
             title={ title }
             actions={ actions }>
