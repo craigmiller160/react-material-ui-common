@@ -16,8 +16,18 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import React from 'react';
+
 describe('Tabs', () => {
-    it('test', () => {
-        throw new Error();
+    describe('rendering', () => {
+        it('renders tabs and routes', () => {
+            throw new Error();
+        });
+    });
+
+    describe('behavior', () => {
+        it('handleTabChange', () => {
+            throw new Error();
+        });
     });
 });
