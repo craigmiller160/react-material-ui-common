@@ -17,31 +17,64 @@
  */
 
 import alertSlice from '../../src/ReduxAlert/slice';
-import { combineReducers } from 'redux';
+import { combineReducers, Store } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 
 const rootReducer = combineReducers({
     alert: alertSlice.reducer
 });
 
-const store = configureStore({
-    reducer: rootReducer
-});
+const message = 'Message';
 
 describe('ReduxAlert.slice', () => {
+    let store: Store;
+    beforeEach(() => {
+        store = configureStore({
+            reducer: rootReducer
+        });
+    });
+
     it('initial state', () => {
-        throw new Error();
+        expect(store.getState()).toEqual({
+            alert: {
+                show: false,
+                message: '',
+                type: 'success'
+            }
+        });
     });
 
     it('showErrorAlert', () => {
-        throw new Error();
+        store.dispatch(alertSlice.actions.showErrorAlert(message));
+        expect(store.getState()).toEqual({
+            alert: {
+                show: true,
+                message,
+                type: 'error'
+            }
+        });
     });
 
     it('showSuccessAlert', () => {
-        throw new Error();
+        store.dispatch(alertSlice.actions.showSuccessAlert(message));
+        expect(store.getState()).toEqual({
+            alert: {
+                show: true,
+                message,
+                type: 'success'
+            }
+        });
     });
 
     it('hideAlert', () => {
-        throw new Error();
+        store.dispatch(alertSlice.actions.showErrorAlert(message));
+        store.dispatch(alertSlice.actions.hideAlert());
+        expect(store.getState()).toEqual({
+            alert: {
+                show: false,
+                message,
+                type: 'error'
+            }
+        });
     });
 });
