@@ -23,7 +23,6 @@ module.exports = {
     setupFilesAfterEnv: [
         '<rootDir>/test/setup.ts'
     ],
-    bail: true,
     collectCoverage: true,
     collectCoverageFrom: [
         '<rootDir>/src/**/*.{ts,tsx}',
