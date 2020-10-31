@@ -26,7 +26,7 @@ module.exports = {
     bail: true,
     collectCoverage: true,
     collectCoverageFrom: [
-        'test/**/*.{ts,tsx}'
+        'src/**/*.{ts,tsx}'
     ],
     moduleNameMapper: {
         '\\.(scss)$': 'identity-obj-proxy'
