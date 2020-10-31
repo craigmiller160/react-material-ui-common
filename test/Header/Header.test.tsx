@@ -36,8 +36,19 @@ describe('Header', () => {
             const component = mount(
                 <TestPageHeader />
             );
-            console.log(component.debug());
-            throw new Error();
+
+            const rootDir = component.find('div#header');
+            expect(rootDir.props().className).toEqual('Header');
+
+            const h3 = component.find('h3');
+            expect(h3).toHaveLength(1);
+            expect(h3.text()).toEqual('TheHeader');
+
+            const h5 = component.find('h5');
+            expect(h5).toHaveLength(0);
+
+            const hr = component.find('hr');
+            expect(hr).toHaveLength(1);
         });
 
         it('renders without divider', () => {

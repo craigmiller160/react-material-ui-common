@@ -33,8 +33,8 @@ interface HeaderProps extends PublicProps {
 }
 
 const BaseHeader = ({ title, variant, noDivider, id }: HeaderProps) => (
-    <div className={ classes.Header }>
-        <Typography id={ id } variant={ variant }>{ title }</Typography>
+    <div id={ id } className={ classes.Header }>
+        <Typography variant={ variant }>{ title }</Typography>
         {
             !noDivider &&
             <Divider />

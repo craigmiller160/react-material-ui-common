@@ -20,7 +20,9 @@ const { defaults } = require('jest-config');
 
 module.exports = {
     ...defaults,
-    setupTestFrameworkScriptFile: '<rootDir>/test/setup.ts',
+    setupFilesAfterEnv: [
+        '<rootDir>/test/setup.ts'
+    ],
     bail: true,
     collectCoverage: true,
     collectCoverageFrom: [
