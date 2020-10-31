@@ -38,6 +38,7 @@
     "@reduxjs/toolkit": "^1.4.0",
     "react": "^16.13.1",
     "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5"
   }
 }

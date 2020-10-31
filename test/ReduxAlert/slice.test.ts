@@ -16,8 +16,32 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import alertSlice from '../../src/ReduxAlert/slice';
+import { combineReducers } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
+
+const rootReducer = combineReducers({
+    alert: alertSlice.reducer
+});
+
+const store = configureStore({
+    reducer: rootReducer
+});
+
 describe('ReduxAlert.slice', () => {
-    it('test', () => {
+    it('initial state', () => {
+        throw new Error();
+    });
+
+    it('showErrorAlert', () => {
+        throw new Error();
+    });
+
+    it('showSuccessAlert', () => {
+        throw new Error();
+    });
+
+    it('hideAlert', () => {
         throw new Error();
     });
 });
