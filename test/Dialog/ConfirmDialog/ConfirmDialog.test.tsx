@@ -19,6 +19,8 @@
 import React from 'react';
 import ConfirmDialog, { Props as ConfirmDialogProps } from '../../../src/Dialog/ConfirmDialog';
 import createTestComponent from '../../utils/createTestComponent';
+import { mount, ReactWrapper } from 'enzyme';
+import renderingValidator, { RenderedItem } from '../../utils/renderingValidator';
 
 const onConfirm = jest.fn();
 const onCancel = jest.fn();
@@ -34,20 +36,65 @@ const defaultProps: ConfirmDialogProps = {
 
 const TestConfirmDialog = createTestComponent(defaultProps, ConfirmDialog);
 
+const baseDialogItem: RenderedItem = {
+    selector: 'BaseDialog',
+    values: [
+        {
+            props: {
+                id: 'ConfirmDialog',
+                open: true,
+                title: 'Confirm Dialog',
+                actions: [
+                    { label: 'Confirm', onClick: expect.any(Function) },
+                    { label: 'Cancel', onClick: expect.any(Function) }
+                ]
+            }
+        }
+    ]
+};
+
+const textItem: RenderedItem = {
+    selector: 'ForwardRef(DialogContentText) p',
+    values: [
+        {
+            text: 'This is a confirm message'
+        }
+    ]
+};
+
 describe('ConfirmDialog', () => {
     describe('rendering', () => {
         it('renders dialog', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestConfirmDialog />
+            );
+
+            const items: Array<RenderedItem> = [
+                baseDialogItem,
+                textItem
+            ];
+
+            renderingValidator(wrapper, items);
         });
     });
 
     describe('behavior', () => {
         it('onConfirm', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestConfirmDialog />
+            );
+
+            wrapper.find('button#ConfirmDialog-btn-0').simulate('click');
+            expect(onConfirm).toHaveBeenCalled();
         });
 
         it('onCancel', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestConfirmDialog />
+            );
+
+            wrapper.find('button#ConfirmDialog-btn-1').simulate('click');
+            expect(onCancel).toHaveBeenCalled();
         });
     });
 });
