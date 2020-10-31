@@ -16,33 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const { defaults } = require('jest-config');
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-module.exports = {
-    ...defaults,
-    setupTestFrameworkScriptFile: '<rootDir>/test/setup.ts',
-    bail: true,
-    collectCoverage: true,
-    collectCoverageFrom: [
-        'test/**/*.{ts,tsx}'
-    ],
-    moduleNameMapper: {
-        '\\.(scss)$': 'identity-obj-proxy'
-    },
-    modulePaths: [
-        '<rootDir>/src'
-    ],
-    testMatch: [
-        '<rootDir>/test/**/*.test.{ts,tsx}'
-    ],
-    moduleDirectories: [
-        'node_modules',
-        'src'
-    ],
-    testEnvironment: 'jsdom',
-    testURL: 'http://localhost',
-    modulePathIgnorePatterns: [
-        '<rootDir>/.yalc'
-    ],
-    preset: 'ts-jest'
-};
+configure({ adapter: new Adapter() });
