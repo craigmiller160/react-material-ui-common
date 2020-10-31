@@ -17,9 +17,10 @@
  */
 
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import { PageHeader, SectionHeader, PublicProps as HeaderProps } from '../../src/Header';
 import createTestComponent from '../utils/CreateTestComponent';
+import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
 const defaultProps: HeaderProps = {
     title: 'TheHeader',
@@ -33,22 +34,41 @@ const TestPageHeader = createTestComponent(defaultProps, PageHeader);
 describe('Header', () => {
     describe('PageHeader', () => {
         it('renders with divider', () => {
-            const component = mount(
+            const wrapper: ReactWrapper = mount(
                 <TestPageHeader />
             );
 
-            const rootDir = component.find('div#header');
-            expect(rootDir.props().className).toEqual('Header');
+            const items: Array<RenderedItem> = [
+                {
+                    selector: 'div#header',
+                    values: [
+                        {
+                            props: {
+                                className: 'Header'
+                            },
+                            propsExact: false
+                        }
+                    ]
+                },
+                {
+                    selector: 'h3',
+                    values: [
+                        {
+                            text: 'TheHeader'
+                        }
+                    ]
+                },
+                {
+                    selector: 'h5',
+                    values: []
+                },
+                {
+                    selector: 'hr',
+                    values: [{}]
+                }
+            ];
 
-            const h3 = component.find('h3');
-            expect(h3).toHaveLength(1);
-            expect(h3.text()).toEqual('TheHeader');
-
-            const h5 = component.find('h5');
-            expect(h5).toHaveLength(0);
-
-            const hr = component.find('hr');
-            expect(hr).toHaveLength(1);
+            renderingValidator(wrapper, items);
         });
 
         it('renders without divider', () => {
