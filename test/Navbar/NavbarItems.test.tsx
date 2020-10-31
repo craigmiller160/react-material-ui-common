@@ -16,10 +16,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export const abc = null;
-
-describe('Experimental test', () => {
-    it('runs test', () => {
-        console.log('Working');
+describe('NavbarItems', () => {
+    it('test', () => {
+        throw new Error();
     });
 });
