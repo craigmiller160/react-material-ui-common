@@ -19,7 +19,7 @@
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import { PageHeader, SectionHeader, PublicProps as HeaderProps } from '../../src/Header';
-import createTestComponent from '../utils/CreateTestComponent';
+import createTestComponent from '../utils/createTestComponent';
 import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
 const defaultProps: HeaderProps = {
