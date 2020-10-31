@@ -19,7 +19,7 @@
 import React from 'react';
 import { ComponentType } from 'react';
 
-const TestComponent = <Props extends object>(defaultProps: Props, component: ComponentType) =>
+const createTestComponent = <Props extends object>(defaultProps: Props, component: ComponentType) =>
     (props: Partial<Props>) => {
         const actualProps: Props = {
             ...defaultProps,
@@ -33,4 +33,4 @@ const TestComponent = <Props extends object>(defaultProps: Props, component: Com
         );
     };
 
-export default TestComponent;
+export default createTestComponent;

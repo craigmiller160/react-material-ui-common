@@ -32,7 +32,7 @@ interface HeaderProps extends PublicProps {
     variant?: Variant;
 }
 
-const Index = ({ title, variant, noDivider, id }: HeaderProps) => (
+const BaseHeader = ({ title, variant, noDivider, id }: HeaderProps) => (
     <div className={ classes.Header }>
         <Typography id={ id } variant={ variant }>{ title }</Typography>
         {
@@ -42,5 +42,5 @@ const Index = ({ title, variant, noDivider, id }: HeaderProps) => (
     </div>
 );
 
-export const PageHeader = (props: PublicProps) => <Index { ...props } variant="h3" />;
-export const SectionHeader = (props: PublicProps) => <Index { ...props } variant="h5" />;
+export const PageHeader = (props: PublicProps) => <BaseHeader { ...props } variant="h3" />;
+export const SectionHeader = (props: PublicProps) => <BaseHeader { ...props } variant="h5" />;

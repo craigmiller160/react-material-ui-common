@@ -18,17 +18,34 @@
 
 import React from 'react';
 import { PageHeader, SectionHeader, PublicProps as HeaderProps } from '../../src/Header';
+import createTestComponent from '../utils/CreateTestComponent';
 
 const defaultProps: HeaderProps = {
-    title: ''
+    title: 'TheHeader',
+    noDivider: false,
+    id: 'header'
 };
 
+const TestSectionHeader = createTestComponent(defaultProps, SectionHeader)
+
 describe('Header', () => {
-    it('renders PageHeader', () => {
-        throw new Error();
+    describe('PageHeader', () => {
+        it('renders with divider', () => {
+            throw new Error();
+        });
+
+        it('renders without divider', () => {
+            throw new Error();
+        });
     });
 
-    it('renders SectionHeader', () => {
-        throw new Error();
+    describe('SectionHeader', () => {
+        it('renders with divider', () => {
+            throw new Error();
+        });
+
+        it('renders without divider', () => {
+            throw new Error();
+        });
     });
 });
