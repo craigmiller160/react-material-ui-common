@@ -16,8 +16,22 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import React from 'react';
+
 describe('ConfirmDialog', () => {
-    it('test', () => {
-        throw new Error();
+    describe('rendering', () => {
+        it('renders dialog', () => {
+            throw new Error();
+        });
+    });
+
+    describe('behavior', () => {
+        it('onConfirm', () => {
+            throw new Error();
+        });
+
+        it('onCancel', () => {
+            throw new Error();
+        });
     });
 });

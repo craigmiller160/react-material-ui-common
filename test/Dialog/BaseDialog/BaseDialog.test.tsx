@@ -16,8 +16,18 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import React from 'react';
+
 describe('BaseDialog', () => {
-    it('test', () => {
-        throw new Error();
+    describe('rendering', () => {
+        it('renders dialog', () => {
+            throw new Error();
+        });
+    });
+
+    describe('actions', () => {
+        it('handles button action', () => {
+            throw new Error();
+        });
     });
 });
