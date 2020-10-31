@@ -23,13 +23,13 @@ module.exports = {
     bail: true,
     collectCoverage: true,
     collectCoverageFrom: [
-        'test/**/*.{js,jsx,ts,tsx}'
+        'test/**/*.{ts,tsx}'
     ],
     modulePaths: [
         '<rootDir>/src'
     ],
     testMatch: [
-        '<rootDir>/test/**/*'
+        '<rootDir>/test/**/*.test.{ts,tsx}'
     ],
     moduleDirectories: [
         'node_modules',

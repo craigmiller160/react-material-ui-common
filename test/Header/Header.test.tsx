@@ -16,8 +16,19 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import React from 'react';
+import { PageHeader, SectionHeader, PublicProps as HeaderProps } from '../../src/Header';
+
+const defaultProps: HeaderProps = {
+    title: ''
+};
+
 describe('Header', () => {
-    it('test', () => {
+    it('renders PageHeader', () => {
+        throw new Error();
+    });
+
+    it('renders SectionHeader', () => {
         throw new Error();
     });
 });
