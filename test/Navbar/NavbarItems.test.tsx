@@ -16,8 +16,16 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import React from 'react';
+
 describe('NavbarItems', () => {
-    it('test', () => {
-        throw new Error();
+    describe('rendering', () => {
+        it('renders items', () => {
+            throw new Error();
+        });
+
+        it('renders with isAuth = false', () => {
+            throw new Error();
+        });
     });
 });

@@ -16,8 +16,30 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import React from 'react';
+
 describe('Navbar', () => {
-    it('test', () => {
-        throw new Error();
+    describe('rendering', () => {
+        it('renders not for phone', () => {
+            throw new Error();
+        });
+
+        it('renders not for phone, with showAuthBtn', () => {
+            throw new Error();
+        });
+
+        it('renders for phone', () => {
+            throw new Error();
+        });
+    });
+
+    describe('behavior', () => {
+        it('handleMenuOpen', () => {
+            throw new Error();
+        });
+
+        it('handleMenuClose', () => {
+            throw new Error();
+        });
     });
 });
