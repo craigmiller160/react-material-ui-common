@@ -37,8 +37,7 @@ const headerDivItem: RenderedItem = {
         {
             props: {
                 className: 'Header'
-            },
-            propsExact: false
+            }
         }
     ]
 };

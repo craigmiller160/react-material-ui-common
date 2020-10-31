@@ -21,7 +21,6 @@ import { ReactWrapper } from 'enzyme';
 export interface RenderedItemValue {
     text?: string;
     props?: object;
-    propsExact?: boolean; // Defaults to true
 }
 
 export interface RenderedItem {
@@ -40,12 +39,9 @@ const renderingValidator = (wrapper: ReactWrapper, items: Array<RenderedItem>) =
                 expect(foundItemAtIndex.text()).toEqual(value.text);
             }
 
-            const propsExact = value.propsExact ?? true;
-
-            if (value.props && propsExact) {
-                expect(foundItemAtIndex.props()).toEqual(value.props);
-            } else if (value.props) {
-                expect(foundItemAtIndex.props()).toEqual(expect.objectContaining(value.props));
+            if (value.props) {
+                expect(foundItemAtIndex.props())
+                    .toEqual(expect.objectContaining(value.props));
             }
         });
     });

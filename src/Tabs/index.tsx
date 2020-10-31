@@ -21,6 +21,7 @@ import MuiTabs from '@material-ui/core/Tabs';
 import { Redirect, Route, Switch, useHistory, useLocation, useRouteMatch } from 'react-router';
 import { Tab } from '@material-ui/core';
 import { TabConfig } from '../types';
+import classes from './Tabs.module.scss';
 
 // Only designed at the moment to work with tabs at the end of the react router path
 
@@ -60,9 +61,8 @@ const Tabs = (props: Props) => {
     };
 
     return (
-        <div id={ props.id } className="TabsContainer">
+        <div id={ props.id } className={ classes.TabsContainer }>
             <MuiTabs
-                className="Tabs"
                 value={ state.selectedTab }
                 indicatorColor="primary"
                 textColor="primary"

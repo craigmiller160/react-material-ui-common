@@ -20,14 +20,16 @@ import React from 'react';
 import Tabs, { Props as TabsProps } from '../../src/Tabs';
 import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
 import createTestComponent from '../utils/createTestComponent';
+import { mount, ReactWrapper } from 'enzyme';
+import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
 const defaultRouterOptions: RouterOptions = {
-    initialEntries: ['/'],
+    initialEntries: ['/root/tab1'],
     initialIndex: 0
 };
 
 const defaultProps: TabsProps = {
-    id: 'Tabs',
+    id: 'tabs',
     tabs: [
         {
             id: 'tab1',
@@ -47,10 +49,86 @@ const defaultProps: TabsProps = {
 const TestRouter = createTestRouter(defaultRouterOptions);
 const TestTabs = createTestComponent(defaultProps, Tabs);
 
+const rootDivItem: RenderedItem = {
+    selector: 'div#tabs',
+    values: [
+        {
+            props: {
+                className: 'TabsContainer'
+            }
+        }
+    ]
+};
+
+const muiTabsItem: RenderedItem = {
+    selector: 'WithStyles(ForwardRef(Tabs))',
+    values: [
+        {
+            props: {
+                value: 0,
+                indicatorColor: 'primary',
+                textColor: 'primary',
+                centered: true,
+                onChange: expect.any(Function)
+            }
+        }
+    ]
+};
+
+const tabItems: RenderedItem = {
+    selector: 'ForwardRef(Tab)',
+    values: [
+        {
+            props: {
+                id: 'tab1',
+                label: 'Tab 1'
+            }
+        },
+        {
+            props: {
+                id: 'tab2',
+                label: 'Tab 2'
+            }
+        }
+    ]
+};
+
+const switchItem: RenderedItem = {
+    selector: 'Switch',
+    values: [{}]
+};
+
+const routeItems: RenderedItem = {
+    selector: 'Route',
+    values: [
+        {
+            props: {
+                path: '//tab1',
+                exact: true,
+                component: expect.anything()
+            }
+        }
+    ]
+};
+
 describe('Tabs', () => {
     describe('rendering', () => {
         it('renders tabs and routes', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestRouter>
+                    <TestTabs />
+                </TestRouter>
+            );
+
+            const items: Array<RenderedItem> = [
+                rootDivItem,
+                muiTabsItem,
+                tabItems,
+                switchItem,
+                routeItems
+            ];
+
+            renderingValidator(wrapper, items);
         });
     });
 
