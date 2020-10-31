@@ -21,7 +21,7 @@ import Tabs, { Props as TabsProps } from '../../src/Tabs';
 import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
 import createTestComponent from '../utils/createTestComponent';
 import { mount, ReactWrapper } from 'enzyme';
-import { act } from 'react-dom/test-utils'
+import { act } from 'react-dom/test-utils';
 import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
 const defaultRouterOptions: RouterOptions = {

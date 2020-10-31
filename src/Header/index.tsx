@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React, { ComponentType } from 'react';
+import React from 'react';
 import Divider from '@material-ui/core/Divider';
 import classes from './Header.module.scss';
 import Typography from '@material-ui/core/Typography';
