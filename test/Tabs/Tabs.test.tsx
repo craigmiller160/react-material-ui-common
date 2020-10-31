@@ -21,6 +21,7 @@ import Tabs, { Props as TabsProps } from '../../src/Tabs';
 import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
 import createTestComponent from '../utils/createTestComponent';
 import { mount, ReactWrapper } from 'enzyme';
+import { act } from 'react-dom/test-utils'
 import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
 const defaultRouterOptions: RouterOptions = {
@@ -60,12 +61,12 @@ const rootDivItem: RenderedItem = {
     ]
 };
 
-const muiTabsItem: RenderedItem = {
+const createMuiTabsItem = (value: number): RenderedItem => ({
     selector: 'WithStyles(ForwardRef(Tabs))',
     values: [
         {
             props: {
-                value: 0,
+                value,
                 indicatorColor: 'primary',
                 textColor: 'primary',
                 centered: true,
@@ -73,7 +74,7 @@ const muiTabsItem: RenderedItem = {
             }
         }
     ]
-};
+});
 
 const tabItems: RenderedItem = {
     selector: 'ForwardRef(Tab)',
@@ -98,12 +99,25 @@ const switchItem: RenderedItem = {
     values: [{}]
 };
 
-const routeItems: RenderedItem = {
+const tab1RouteItem: RenderedItem = {
     selector: 'Route',
     values: [
         {
             props: {
                 path: '//tab1',
+                exact: true,
+                component: expect.anything()
+            }
+        }
+    ]
+};
+
+const tab2RouteItem: RenderedItem = {
+    selector: 'Route',
+    values: [
+        {
+            props: {
+                path: '//tab2',
                 exact: true,
                 component: expect.anything()
             }
@@ -122,10 +136,10 @@ describe('Tabs', () => {
 
             const items: Array<RenderedItem> = [
                 rootDivItem,
-                muiTabsItem,
+                createMuiTabsItem(0),
                 tabItems,
                 switchItem,
-                routeItems
+                tab1RouteItem
             ];
 
             renderingValidator(wrapper, items);
@@ -134,7 +148,25 @@ describe('Tabs', () => {
 
     describe('behavior', () => {
         it('handleTabChange', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestRouter>
+                    <TestTabs />
+                </TestRouter>
+            );
+
+            wrapper.find('ForwardRef(Tab)').at(1).simulate('click');
+            act(() => {
+                wrapper.update();
+            });
+            const items: Array<RenderedItem> = [
+                rootDivItem,
+                createMuiTabsItem(1),
+                tabItems,
+                switchItem,
+                tab2RouteItem
+            ];
+
+            renderingValidator(wrapper, items);
         });
     });
 });
