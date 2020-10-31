@@ -16,3 +16,28 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+const { defaults } = require('jest-config');
+
+module.exports = {
+    ...defaults,
+    bail: true,
+    collectCoverage: true,
+    collectCoverageFrom: [
+        'test/**/*.{js,jsx,ts,tsx}'
+    ],
+    modulePaths: [
+        '<rootDir>/src'
+    ],
+    testMatch: [
+        '<rootDir>/src'
+    ],
+    moduleDirectories: [
+        'node_modules',
+        'src'
+    ],
+    testEnvironment: 'jsdom',
+    testURL: 'http://localhost',
+    modulePathIgnorePatterns: [
+        '<rootDir>/.yalc'
+    ]
+};
