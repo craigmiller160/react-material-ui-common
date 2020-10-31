@@ -21,7 +21,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import BaseDialog from '../BaseDialog';
 import { DialogAction } from '../../types';
 
-interface Props {
+export interface Props {
     id?: string;
     open: boolean;
     title: string;

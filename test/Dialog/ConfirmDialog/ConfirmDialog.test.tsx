@@ -17,6 +17,22 @@
  */
 
 import React from 'react';
+import ConfirmDialog, { Props as ConfirmDialogProps } from '../../../src/Dialog/ConfirmDialog';
+import createTestComponent from '../../utils/createTestComponent';
+
+const onConfirm = jest.fn();
+const onCancel = jest.fn();
+
+const defaultProps: ConfirmDialogProps = {
+    id: 'ConfirmDialog',
+    open: true,
+    title: 'Confirm Dialog',
+    message: 'This is a confirm message',
+    onCancel,
+    onConfirm
+};
+
+const TestConfirmDialog = createTestComponent(defaultProps, ConfirmDialog);
 
 describe('ConfirmDialog', () => {
     describe('rendering', () => {
