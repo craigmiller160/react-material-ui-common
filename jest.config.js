@@ -39,5 +39,6 @@ module.exports = {
     testURL: 'http://localhost',
     modulePathIgnorePatterns: [
         '<rootDir>/.yalc'
-    ]
+    ],
+    preset: 'ts-jest'
 };
