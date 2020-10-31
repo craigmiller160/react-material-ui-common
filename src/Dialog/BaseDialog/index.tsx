@@ -25,7 +25,7 @@ import Button from '@material-ui/core/Button';
 import styles from './BaseDialog.module.scss';
 import { DialogAction } from '../../types';
 
-interface Props {
+export interface Props {
     id?: string;
     open: boolean;
     title: string;

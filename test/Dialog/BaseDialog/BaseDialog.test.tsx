@@ -17,6 +17,22 @@
  */
 
 import React from 'react';
+import BaseDialog, { Props as BaseDialogProps } from '../../../src/Dialog/BaseDialog';
+
+const actionClick = jest.fn();
+
+const defaultProps: BaseDialogProps = {
+    id: 'BaseDialog',
+    open: true,
+    title: 'Base Dialog',
+    actions: [
+        {
+            label: 'Action',
+            onClick: actionClick
+        }
+    ],
+    className: 'MyClass'
+};
 
 describe('BaseDialog', () => {
     describe('rendering', () => {
