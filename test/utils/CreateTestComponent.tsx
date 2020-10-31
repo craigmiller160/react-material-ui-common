@@ -23,7 +23,7 @@ const createTestComponent = <Props extends object>(defaultProps: Props, componen
     (props: Partial<Props>) => {
         const actualProps: Props = {
             ...defaultProps,
-            props
+            ...props
         };
 
         const Component: ComponentType<Props> = component;

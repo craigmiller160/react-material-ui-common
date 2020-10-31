@@ -31,6 +31,56 @@ const defaultProps: HeaderProps = {
 const TestSectionHeader = createTestComponent(defaultProps, SectionHeader);
 const TestPageHeader = createTestComponent(defaultProps, PageHeader);
 
+const headerDivItem: RenderedItem = {
+    selector: 'div#header',
+    values: [
+        {
+            props: {
+                className: 'Header'
+            },
+            propsExact: false
+        }
+    ]
+};
+
+const h3Item: RenderedItem = {
+    selector: 'h3',
+    values: [
+        {
+            text: 'TheHeader'
+        }
+    ]
+};
+
+const noH3Item: RenderedItem = {
+    selector: 'h3',
+    values: []
+};
+
+const h5Item: RenderedItem = {
+    selector: 'h5',
+    values: [
+        {
+            text: 'TheHeader'
+        }
+    ]
+};
+
+const noH5Item: RenderedItem = {
+    selector: 'h5',
+    values: []
+};
+
+const hrItem: RenderedItem = {
+    selector: 'hr',
+    values: [{}]
+};
+
+const noHrItem: RenderedItem = {
+    selector: 'hr',
+    values: []
+};
+
 describe('Header', () => {
     describe('PageHeader', () => {
         it('renders with divider', () => {
@@ -39,50 +89,60 @@ describe('Header', () => {
             );
 
             const items: Array<RenderedItem> = [
-                {
-                    selector: 'div#header',
-                    values: [
-                        {
-                            props: {
-                                className: 'Header'
-                            },
-                            propsExact: false
-                        }
-                    ]
-                },
-                {
-                    selector: 'h3',
-                    values: [
-                        {
-                            text: 'TheHeader'
-                        }
-                    ]
-                },
-                {
-                    selector: 'h5',
-                    values: []
-                },
-                {
-                    selector: 'hr',
-                    values: [{}]
-                }
+                headerDivItem,
+                h3Item,
+                noH5Item,
+                hrItem
             ];
 
             renderingValidator(wrapper, items);
         });
 
         it('renders without divider', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestPageHeader noDivider />
+            );
+
+            const items: Array<RenderedItem> = [
+                headerDivItem,
+                h3Item,
+                noH5Item,
+                noHrItem
+            ];
+
+            renderingValidator(wrapper, items);
         });
     });
 
     describe('SectionHeader', () => {
         it('renders with divider', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestSectionHeader />
+            );
+
+            const items: Array<RenderedItem> = [
+                headerDivItem,
+                noH3Item,
+                h5Item,
+                hrItem
+            ];
+
+            renderingValidator(wrapper, items);
         });
 
         it('renders without divider', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestSectionHeader noDivider />
+            );
+
+            const items: Array<RenderedItem> = [
+                headerDivItem,
+                noH3Item,
+                h5Item,
+                noHrItem
+            ];
+
+            renderingValidator(wrapper, items);
         });
     });
 });
