@@ -40,3 +40,5 @@ const createTestRouter = (defaultOptions: RouterOptions) => (props: Partial<Prop
         </MemoryRouter>
     );
 };
+
+export default createTestRouter;

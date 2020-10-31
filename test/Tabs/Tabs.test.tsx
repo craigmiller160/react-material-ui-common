@@ -17,6 +17,14 @@
  */
 
 import React from 'react';
+import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
+
+const defaultRouterOptions: RouterOptions = {
+    initialEntries: ['/'],
+    initialIndex: 0
+};
+
+const TestRouter = createTestRouter(defaultRouterOptions);
 
 describe('Tabs', () => {
     describe('rendering', () => {

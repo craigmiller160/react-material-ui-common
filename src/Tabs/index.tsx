@@ -24,7 +24,7 @@ import { TabConfig } from '../types';
 
 // Only designed at the moment to work with tabs at the end of the react router path
 
-interface Props {
+export interface Props {
     id?: string;
     tabs: TabConfig[]
 }
