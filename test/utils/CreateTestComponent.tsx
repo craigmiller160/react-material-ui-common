@@ -19,14 +19,14 @@
 import React from 'react';
 import { ComponentType } from 'react';
 
-const createTestComponent = <Props extends object>(defaultProps: Props, component: ComponentType) =>
+const createTestComponent = <Props extends object>(defaultProps: Props, component: ComponentType<Props>) =>
     (props: Partial<Props>) => {
         const actualProps: Props = {
             ...defaultProps,
             props
         };
 
-        const Component: ComponentType = component;
+        const Component: ComponentType<Props> = component;
 
         return (
             <Component { ...actualProps } />

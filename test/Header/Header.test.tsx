@@ -26,7 +26,8 @@ const defaultProps: HeaderProps = {
     id: 'header'
 };
 
-const TestSectionHeader = createTestComponent(defaultProps, SectionHeader)
+const TestSectionHeader = createTestComponent(defaultProps, SectionHeader);
+const TestPageHeader = createTestComponent(defaultProps, PageHeader);
 
 describe('Header', () => {
     describe('PageHeader', () => {
