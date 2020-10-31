@@ -17,6 +17,7 @@
  */
 
 import React from 'react';
+import { mount } from 'enzyme';
 import { PageHeader, SectionHeader, PublicProps as HeaderProps } from '../../src/Header';
 import createTestComponent from '../utils/CreateTestComponent';
 
@@ -32,6 +33,10 @@ const TestPageHeader = createTestComponent(defaultProps, PageHeader);
 describe('Header', () => {
     describe('PageHeader', () => {
         it('renders with divider', () => {
+            const component = mount(
+                <TestPageHeader />
+            );
+            console.log(component.debug());
             throw new Error();
         });
 

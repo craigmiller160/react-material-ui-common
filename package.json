@@ -7,6 +7,7 @@
   "sideEffects": "false",
   "devDependencies": {
     "@craigmiller160/eslint-config-cra-extension": "^1.2.0",
+    "@types/enzyme": "^3.10.8",
     "@types/react-redux": "^7.1.9",
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.6",
