@@ -17,14 +17,35 @@
  */
 
 import React from 'react';
+import Tabs, { Props as TabsProps } from '../../src/Tabs';
 import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
+import createTestComponent from '../utils/createTestComponent';
 
 const defaultRouterOptions: RouterOptions = {
     initialEntries: ['/'],
     initialIndex: 0
 };
 
+const defaultProps: TabsProps = {
+    id: 'Tabs',
+    tabs: [
+        {
+            id: 'tab1',
+            label: 'Tab 1',
+            path: '/tab1',
+            component: () => <div />
+        },
+        {
+            id: 'tab2',
+            label: 'Tab 2',
+            path: '/tab2',
+            component: () => <div />
+        }
+    ]
+};
+
 const TestRouter = createTestRouter(defaultRouterOptions);
+const TestTabs = createTestComponent(defaultProps, Tabs);
 
 describe('Tabs', () => {
     describe('rendering', () => {
