@@ -78,8 +78,8 @@ const buttonsItem: RenderedItem = {
     values: [
         {
             props: {
-                variant: 'text',
-                color: 'inherit'
+                variant: 'contained',
+                color: 'default'
             },
             text: 'One'
         },
