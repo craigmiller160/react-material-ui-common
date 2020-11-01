@@ -22,6 +22,7 @@ import createTestComponent from '../utils/createTestComponent';
 import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
 import { mount, ReactWrapper } from 'enzyme';
 import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
+import { DrawerProps } from '@material-ui/core';
 
 const handleMenuClose = jest.fn();
 const authAction = jest.fn();
@@ -204,21 +205,61 @@ describe('MobileMenu', () => {
         });
 
         it('renders with showAuthBtn', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestRouter>
+                    <TestMobileMenu showAuthBtn />
+                </TestRouter>
+            );
+
+            const items: RenderedItem[] = [
+                drawerItem,
+                titleNavLinkItem,
+                titleItem,
+                noListItems,
+                authBtnItem
+            ];
+
+            renderingValidator(wrapper, items);
         });
     });
 
     describe('behavior', () => {
         it('authButtonClick', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestRouter>
+                    <TestMobileMenu showAuthBtn />
+                </TestRouter>
+            );
+
+            wrapper.find('ForwardRef(ListItem)#navbar-mobile-auth-btn').simulate('click');
+
+            expect(authAction).toHaveBeenCalled();
         });
 
         it('Drawer handleMenuClose', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestRouter>
+                    <TestMobileMenu />
+                </TestRouter>
+            );
+
+            const props: any = wrapper.find("ForwardRef(Drawer)").props();
+            props?.onClose();
+
+            expect(handleMenuClose).toHaveBeenCalled();
         });
 
         it('Title click', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestRouter>
+                    <TestMobileMenu />
+                </TestRouter>
+            );
+
+            wrapper.find('#navbar-mobile-title-btn').simulate('click');
+
+            expect(handleMenuClose).toHaveBeenCalled();
+            // TODO test route change
         });
 
         it('menu item click', () => {
