@@ -17,6 +17,16 @@
  */
 
 import React from 'react';
+import NavbarItems, { Props as NavbarItemsProps } from '../../src/Navbar/NavbarItems';
+import createTestComponent from '../utils/createTestComponent';
+
+const defaultProps: NavbarItemsProps = {
+    isAuth: true,
+    navLinkClass: 'LinkClass',
+    items: []
+};
+
+const TestNavbarItems = createTestComponent(defaultProps, NavbarItems);
 
 describe('NavbarItems', () => {
     describe('rendering', () => {

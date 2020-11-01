@@ -21,7 +21,7 @@ import { NavbarItem } from '../types';
 import { matchPath, NavLink, useLocation } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 
-interface Props {
+export interface Props {
     isAuth: boolean;
     items: Array<NavbarItem>;
     navLinkClass: string;
