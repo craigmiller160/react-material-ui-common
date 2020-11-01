@@ -26,7 +26,8 @@ module.exports = {
     collectCoverage: true,
     collectCoverageFrom: [
         '<rootDir>/src/**/*.{ts,tsx}',
-        '!<rootDir>/node_modules/'
+        '!<rootDir>/node_modules/',
+        '!<rootDir>/src/**/*.d.ts'
     ],
     moduleNameMapper: {
         '\\.(scss)$': 'identity-obj-proxy'
