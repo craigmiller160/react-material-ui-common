@@ -23,7 +23,7 @@ import { Drawer, ListItem, ListItemText, Typography } from '@material-ui/core';
 import { matchPath, NavLink, useLocation } from 'react-router-dom';
 import styles from './MobileMenu.module.scss';
 
-interface Props {
+export interface Props {
     menuOpen: boolean;
     handleMenuClose: () => void;
     authAction: () => void;
@@ -83,9 +83,13 @@ const MobileMenu = (props: Props) => {
                     const activeClass = isMatch ? ' active' : '';
                     const itemClass = `${styles.item} ${activeClass}`;
 
+                    const idString = item.to
+                        .replace(/^\//, '')
+                        .replace(/\//g, '');
+
                     return (
                         <ListItem
-                            id={ `navbar-mobile-item-${item.to.replace(/^\//, '').replaceAll('/', '-')}` }
+                            id={ `navbar-mobile-item-${idString}` }
                             key={ index }
                             className={ itemClass }
                             onClick={ props.handleMenuClose }

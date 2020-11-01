@@ -17,6 +17,43 @@
  */
 
 import React from 'react';
+import MobileMenu, { Props as MobileMenuProps } from '../../src/Navbar/MobileMenu';
+import createTestComponent from '../utils/createTestComponent';
+import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
+
+const handleMenuClose = jest.fn();
+const authAction = jest.fn();
+
+const defaultProps: MobileMenuProps = {
+    menuOpen: true,
+    handleMenuClose,
+    authAction,
+    authBtnText: 'Auth Btn',
+    isAuth: true,
+    title: 'Application',
+    items:  [
+        {
+            to: '/one/abc',
+            text: 'One',
+            exact: true
+        },
+        {
+            to: '/two/def',
+            text: 'Two',
+            exact: false
+        }
+    ],
+    showAuthBtn: true
+};
+
+const defaultRouterOptions: RouterOptions = {
+    initialEntries: ['/one/abc'],
+    initialIndex: 0
+};
+
+const TestMobileMenu = createTestComponent(defaultProps, MobileMenu);
+const TestRouter = createTestRouter(defaultRouterOptions)
+
 
 describe('MobileMenu', () => {
     describe('rendering', () => {
