@@ -17,6 +17,7 @@
  */
 
 import { ReactWrapper } from 'enzyme';
+import TraceError from 'trace-error';
 
 export interface RenderedItemValue {
     text?: string;
@@ -31,17 +32,47 @@ export interface RenderedItem {
 const renderingValidator = (wrapper: ReactWrapper, items: Array<RenderedItem>) => {
     items.forEach((item) => {
         const foundItem = wrapper.find(item.selector);
-        expect(foundItem).toHaveLength(item.values.length);
+        if (item.values.length > 0) {
+            try {
+                expect(foundItem.exists()).toEqual(true);
+            } catch (ex) {
+                const message = `Item should exist but does not: ${item.selector}`;
+                throw new TraceError(message, ex);
+            }
+        } else {
+            try {
+                expect(foundItem.exists()).toEqual(false);
+            } catch (ex) {
+                const message = `Item should not exist: ${item.selector}`;
+                throw new TraceError(message, ex);
+            }
+        }
+
+        try {
+            expect(foundItem).toHaveLength(item.values.length);
+        } catch (ex) {
+            const message = `Incorrect number of matches for item: ${item.selector}`;
+        }
 
         item.values.forEach((value, index) => {
             const foundItemAtIndex = foundItem.at(index);
-            if (value.text) {
-                expect(foundItemAtIndex.text()).toEqual(value.text);
+            try {
+                if (value.text) {
+                    expect(foundItemAtIndex.text()).toEqual(value.text);
+                }
+            } catch (ex) {
+                const message = `Invalid item text: ${item.selector} (${index})`;
+                throw new TraceError(message, ex);
             }
 
-            if (value.props) {
-                expect(foundItemAtIndex.props())
-                    .toEqual(expect.objectContaining(value.props));
+            try {
+                if (value.props) {
+                    expect(foundItemAtIndex.props())
+                        .toEqual(expect.objectContaining(value.props));
+                }
+            } catch (ex) {
+                const message = `Invalid item props: ${item.selector} (${index})`;
+                throw new TraceError(message, ex);
             }
         });
     });
