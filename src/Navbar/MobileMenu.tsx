@@ -80,12 +80,12 @@ const MobileMenu = (props: Props) => {
                         exact: item.exact
                     });
 
-                    const activeClass = isMatch ? ' active' : '';
-                    const itemClass = `${styles.item} ${activeClass}`;
+                    const activeClass = isMatch ? 'active' : '';
+                    const itemClass = `menu-item ${styles.item} ${activeClass}`;
 
                     const idString = item.to
                         .replace(/^\//, '')
-                        .replace(/\//g, '');
+                        .replace(/\//g, '-');
 
                     return (
                         <ListItem

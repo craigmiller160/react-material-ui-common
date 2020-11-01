@@ -20,6 +20,8 @@ import React from 'react';
 import MobileMenu, { Props as MobileMenuProps } from '../../src/Navbar/MobileMenu';
 import createTestComponent from '../utils/createTestComponent';
 import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
+import { mount, ReactWrapper } from 'enzyme';
+import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
 const handleMenuClose = jest.fn();
 const authAction = jest.fn();
@@ -29,7 +31,7 @@ const defaultProps: MobileMenuProps = {
     handleMenuClose,
     authAction,
     authBtnText: 'Auth Btn',
-    isAuth: true,
+    isAuth: false,
     title: 'Application',
     items:  [
         {
@@ -43,7 +45,7 @@ const defaultProps: MobileMenuProps = {
             exact: false
         }
     ],
-    showAuthBtn: true
+    showAuthBtn: false
 };
 
 const defaultRouterOptions: RouterOptions = {
@@ -52,17 +54,153 @@ const defaultRouterOptions: RouterOptions = {
 };
 
 const TestMobileMenu = createTestComponent(defaultProps, MobileMenu);
-const TestRouter = createTestRouter(defaultRouterOptions)
+const TestRouter = createTestRouter(defaultRouterOptions);
 
+const drawerItem: RenderedItem = {
+    selector: 'ForwardRef(Drawer)',
+    values: [
+        {
+            props: {
+                classes: {
+                    paper: expect.stringContaining('MenuPrimary')
+                },
+                className: 'MobileMenu',
+                open: true,
+                onClose: expect.any(Function)
+            }
+        }
+    ]
+};
+
+const titleNavLinkItem: RenderedItem = {
+    selector: 'NavLink#navbar-mobile-title-btn',
+    values: [
+        {
+            props: {
+                id: 'navbar-mobile-title-btn',
+                to: '/',
+                exact: true,
+                className: 'NavLink'
+            }
+        }
+    ]
+};
+
+const titleItem: RenderedItem = {
+    selector: 'ForwardRef(Typography)',
+    values: [
+        {
+            props: {
+                className: 'title',
+                variant: 'h6',
+                noWrap: true,
+                onClick: expect.any(Function)
+            },
+            text: 'Application'
+        }
+    ]
+};
+
+const noListItems: RenderedItem = {
+    selector: 'ForwardRef(ListItem).menu-item',
+    values: []
+};
+
+const listItems: RenderedItem = {
+    selector: 'ForwardRef(ListItem).menu-item',
+    values: [
+        {
+            props: {
+                id: 'navbar-mobile-item-one-abc',
+                className: 'menu-item item active',
+                onClick: expect.any(Function)
+            }
+        },
+        {
+            props: {
+                id: 'navbar-mobile-item-two-def',
+                className: 'menu-item item ',
+                onClick: expect.any(Function)
+            }
+        }
+    ]
+};
+
+const navLinkItems: RenderedItem = {
+    selector: 'NavLink',
+    values: [
+        {
+            props: {
+                to: '/one/abc',
+                className: 'NavLink'
+            },
+            text: 'One'
+        },
+        {
+            props: {
+                to: '/two/def',
+                className: 'NavLink'
+            },
+            text: 'Two'
+        }
+    ]
+};
+
+const authBtnItem: RenderedItem = {
+    selector: '#navbar-mobile-auth-btn',
+    values: [
+        {
+            props: {
+                id: 'navbar-mobile-auth-btn',
+                className: 'item',
+                onClick: expect.any(Function)
+            },
+            text: 'Auth Btn'
+        }
+    ]
+};
+
+const noAuthBtnItem: RenderedItem = {
+    selector: '#navbar-mobile-auth-btn',
+    values: []
+};
 
 describe('MobileMenu', () => {
     describe('rendering', () => {
         it('base rendering', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestRouter>
+                    <TestMobileMenu />
+                </TestRouter>
+            );
+
+            const items: RenderedItem[] = [
+                drawerItem,
+                titleNavLinkItem,
+                titleItem,
+                noListItems,
+                noAuthBtnItem
+            ];
+
+            renderingValidator(wrapper, items);
         });
 
         it('renders with isAuth', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestRouter>
+                    <TestMobileMenu isAuth />
+                </TestRouter>
+            );
+
+            const items: RenderedItem[] = [
+                drawerItem,
+                titleNavLinkItem,
+                titleItem,
+                listItems,
+                noAuthBtnItem
+            ];
+
+            renderingValidator(wrapper, items);
         });
 
         it('renders with showAuthBtn', () => {
