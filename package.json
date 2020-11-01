@@ -6,7 +6,7 @@
   "license": "MIT",
   "sideEffects": "false",
   "devDependencies": {
-    "@craigmiller160/eslint-config-cra-extension": "^1.2.0",
+    "@craigmiller160/eslint-config-cra-extension": "file:.yalc/@craigmiller160/eslint-config-cra-extension",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/react-dom": "^16.9.9",
