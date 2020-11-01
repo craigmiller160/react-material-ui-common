@@ -256,14 +256,21 @@ describe('MobileMenu', () => {
                 </TestRouter>
             );
 
-            wrapper.find('#navbar-mobile-title-btn').simulate('click');
+            wrapper.find('NavLink#navbar-mobile-title-btn ForwardRef(Typography)').simulate('click');
 
             expect(handleMenuClose).toHaveBeenCalled();
-            // TODO test route change
         });
 
         it('menu item click', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestRouter>
+                    <TestMobileMenu isAuth />
+                </TestRouter>
+            );
+
+            wrapper.find('ForwardRef(ListItem)#navbar-mobile-item-one-abc').simulate('click');
+
+            expect(handleMenuClose).toHaveBeenCalled();
         });
     });
 });
