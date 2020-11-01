@@ -111,7 +111,17 @@ describe('NavbarItems', () => {
         });
 
         it('renders with isAuth = false', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestRouter>
+                    <TestNavbarItems isAuth={ false } />
+                </TestRouter>
+            );
+
+            const items: RenderedItem[] = [
+                noNavLinksItem
+            ];
+
+            renderingValidator(wrapper, items);
         });
     });
 });
