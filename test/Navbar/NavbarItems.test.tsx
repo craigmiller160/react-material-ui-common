@@ -19,19 +19,95 @@
 import React from 'react';
 import NavbarItems, { Props as NavbarItemsProps } from '../../src/Navbar/NavbarItems';
 import createTestComponent from '../utils/createTestComponent';
+import { mount, ReactWrapper } from 'enzyme';
+import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
+import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
 const defaultProps: NavbarItemsProps = {
     isAuth: true,
     navLinkClass: 'LinkClass',
-    items: []
+    items: [
+        {
+            to: '/one/abc',
+            text: 'One',
+            exact: true
+        },
+        {
+            to: '/two/def',
+            text: 'Two',
+            exact: false
+        }
+    ]
+};
+
+const defaultRouterOptions: RouterOptions = {
+    initialEntries: ['/one/abc'],
+    initialIndex: 0
 };
 
 const TestNavbarItems = createTestComponent(defaultProps, NavbarItems);
+const TestRouter = createTestRouter(defaultRouterOptions);
+
+const noNavLinksItem: RenderedItem = {
+    selector: 'NavLink',
+    values: []
+};
+
+const navLinksItem: RenderedItem = {
+    selector: 'NavLink',
+    values: [
+        {
+            props: {
+                id: 'navbar-item-one-abc',
+                to: '/one/abc',
+                className: 'LinkClass'
+            }
+        },
+        {
+            props: {
+                id: 'navbar-item-two-def',
+                to: '/two/def',
+                className: 'LinkClass'
+            }
+        }
+    ]
+};
+
+const buttonsItem: RenderedItem = {
+    selector: 'ForwardRef(Button)',
+    values: [
+        {
+            props: {
+                variant: 'text',
+                color: 'inherit'
+            },
+            text: 'One'
+        },
+        {
+            props: {
+                variant: 'text',
+                color: 'inherit'
+            },
+            text: 'Two'
+        }
+    ]
+};
 
 describe('NavbarItems', () => {
     describe('rendering', () => {
         it('renders items', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestRouter>
+                    <TestNavbarItems />
+                </TestRouter>
+            );
+
+            const items: RenderedItem[] = [
+                navLinksItem,
+                buttonsItem
+            ];
+
+            renderingValidator(wrapper, items);
         });
 
         it('renders with isAuth = false', () => {

@@ -43,9 +43,13 @@ const NavbarItems = (props: Props) => {
                         exact: item.exact
                     });
 
+                    const idString = item.to
+                        .replace(/^\//, '')
+                        .replace(/\//g, '-');
+
                     return (
                         <NavLink
-                            id={ `navbar-item-${item.to.replace('/', '').replaceAll('/', '-')}` }
+                            id={ `navbar-item-${idString}` }
                             key={ index }
                             to={ item.to }
                             className={ props.navLinkClass }
