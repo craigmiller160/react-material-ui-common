@@ -26,7 +26,6 @@ module.exports = {
     collectCoverage: true,
     collectCoverageFrom: [
         '<rootDir>/src/**/*.{ts,tsx}',
-        '<rootDir>/test/**/*.{ts,tsx}',
         '!<rootDir>/node_modules/'
     ],
     moduleNameMapper: {
