@@ -25,7 +25,7 @@ import NavbarItems from './NavbarItems';
 import { NavbarItem } from '../types';
 import MobileMenu from './MobileMenu';
 
-interface Props {
+export interface Props {
     isAuth: boolean;
     showAuthBtn: boolean;
     login: () => void;
@@ -66,7 +66,7 @@ const Navbar = (props: Props) => {
                 <Toolbar>
                     {
                         !isNotPhone &&
-                        <IconButton edge="start" color="inherit" onClick={ handleMenuOpen }>
+                        <IconButton id="navbar-menu-btn" edge="start" color="inherit" onClick={ handleMenuOpen }>
                             <MenuIcon />
                         </IconButton>
                     }

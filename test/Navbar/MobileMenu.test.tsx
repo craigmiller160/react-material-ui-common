@@ -22,7 +22,6 @@ import createTestComponent from '../utils/createTestComponent';
 import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
 import { mount, ReactWrapper } from 'enzyme';
 import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
-import { DrawerProps } from '@material-ui/core';
 
 const handleMenuClose = jest.fn();
 const authAction = jest.fn();
@@ -133,14 +132,16 @@ const navLinkItems: RenderedItem = {
         {
             props: {
                 to: '/one/abc',
-                className: 'NavLink'
+                className: 'NavLink',
+                exact: true
             },
             text: 'One'
         },
         {
             props: {
                 to: '/two/def',
-                className: 'NavLink'
+                className: 'NavLink',
+                exact: false
             },
             text: 'Two'
         }

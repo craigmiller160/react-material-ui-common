@@ -96,6 +96,7 @@ const MobileMenu = (props: Props) => {
                         >
                             <NavLink
                                 to={ item.to }
+                                exact={ item.exact }
                                 className={ styles.NavLink }
                             >
                                 <ListItemText>{ item.text }</ListItemText>
