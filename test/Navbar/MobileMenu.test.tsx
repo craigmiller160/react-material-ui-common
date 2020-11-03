@@ -87,7 +87,7 @@ const titleNavLinkItem: RenderedItem = {
 };
 
 const titleItem: RenderedItem = {
-    selector: 'ForwardRef(Typography)',
+    selector: '#navbar-mobile-title-btn ForwardRef(Typography)',
     values: [
         {
             props: {
@@ -127,7 +127,7 @@ const listItems: RenderedItem = {
 };
 
 const navLinkItems: RenderedItem = {
-    selector: 'NavLink',
+    selector: '.menu-item NavLink.NavLink',
     values: [
         {
             props: {
@@ -149,7 +149,7 @@ const navLinkItems: RenderedItem = {
 };
 
 const authBtnItem: RenderedItem = {
-    selector: '#navbar-mobile-auth-btn',
+    selector: 'ForwardRef(ListItem)#navbar-mobile-auth-btn',
     values: [
         {
             props: {
