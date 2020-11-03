@@ -163,6 +163,26 @@ const noAuthBtnItem: RenderedItem = {
     values: []
 };
 
+const createMobileMenuItem = (isAuth: boolean, showAuthBtn: boolean): RenderedItem => ({
+    selector: 'MobileMenu',
+    values: [
+        {
+            props: {
+                menuOpen: false,
+                handleMenuClose: expect.any(Function),
+                authAction: expect.any(Function),
+                authBtnText: isAuth ? 'Logout' : 'Login',
+                isAuth,
+                title: 'Application',
+                items: [
+                    ...defaultProps.items
+                ],
+                showAuthBtn
+            }
+        }
+    ]
+});
+
 describe('Navbar', () => {
     beforeEach(() => {
         mockUseMediaQuery.mockReset();
@@ -183,7 +203,8 @@ describe('Navbar', () => {
                 titleNavLinkItem,
                 titleItem,
                 createNavbarItems(false),
-                noAuthBtnItem
+                noAuthBtnItem,
+                createMobileMenuItem(false, false)
             ];
 
             renderingValidator(wrapper, items);
@@ -203,7 +224,8 @@ describe('Navbar', () => {
                 titleNavLinkItem,
                 titleItem,
                 createNavbarItems(true),
-                createAuthBtnItem(true)
+                createAuthBtnItem(true),
+                createMobileMenuItem(true, true)
             ];
 
             renderingValidator(wrapper, items);
@@ -223,7 +245,8 @@ describe('Navbar', () => {
                 titleNavLinkItem,
                 titleItem,
                 createNavbarItems(false),
-                createAuthBtnItem(false)
+                createAuthBtnItem(false),
+                createMobileMenuItem(false, true)
             ];
 
             renderingValidator(wrapper, items);
@@ -243,7 +266,8 @@ describe('Navbar', () => {
                 titleNavLinkItem,
                 titleItem,
                 noNavbarItems,
-                noAuthBtnItem
+                noAuthBtnItem,
+                createMobileMenuItem(false, false)
             ];
 
             renderingValidator(wrapper, items);
