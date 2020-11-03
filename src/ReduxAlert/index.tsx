@@ -23,7 +23,7 @@ import alertSlice, { AlertState } from './slice';
 import AlertTitle from '@material-ui/lab/AlertTitle';
 import Collapse from '@material-ui/core/Collapse';
 
-interface Props {
+export interface Props {
     id?: string;
     alertStateName?: string;
 }

@@ -37,3 +37,5 @@ const createTestReduxProvider = <State extends object>(defaultState: State) => (
         </Provider>
     );
 };
+
+export default createTestReduxProvider;

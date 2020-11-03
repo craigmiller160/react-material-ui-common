@@ -17,11 +17,38 @@
  */
 
 import React from 'react';
+import ReduxAlert, { Props as ReduxAlertProps } from '../../src/ReduxAlert';
+import createTestReduxProvider from '../utils/createTestReduxProvider';
+import createTestComponent from '../utils/createTestComponent';
+import { mount, ReactWrapper } from 'enzyme';
+
+const defaultProps: ReduxAlertProps = {
+    id: 'the-alert',
+    alertStateName: 'alert'
+};
+
+const defaultStoreState = {
+    alert: {
+        show: true,
+        type: 'success',
+        message: 'Hello World'
+    }
+};
+type StoreStateType = typeof defaultStoreState;
+
+const TestReduxProvider = createTestReduxProvider<StoreStateType>(defaultStoreState);
+const TestReduxAlert = createTestComponent<ReduxAlertProps>(defaultProps, ReduxAlert);
 
 describe('ReduxAlert', () => {
     describe('rendering', () => {
         it('renders alert', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestReduxProvider>
+                    <TestReduxAlert />
+                </TestReduxProvider>
+            );
+
+            console.log(wrapper.debug()); // TODO delete this
         });
     });
 
