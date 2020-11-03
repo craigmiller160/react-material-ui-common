@@ -16,9 +16,24 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
+import thunk from 'redux-thunk';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
 
+const createMockStore = configureStore([thunk]);
 
-const createTestReduxProvider = <State extends object>(defaultState: State) => (state: Partial<State>) => {
+const createTestReduxProvider = <State extends object>(defaultState: State) => (stateProps: Partial<PropsWithChildren<State>>) => {
+    const actualState: State = {
+        ...defaultState,
+        ...stateProps
+    };
 
+    const store = createMockStore(actualState);
+
+    return (
+        <Provider store={ store }>
+            { stateProps.children }
+        </Provider>
+    );
 };
