@@ -103,7 +103,9 @@ const navbarItems: RenderedItem = {
         {
             props: {
                 isAuth: true,
-                items: defaultProps.items,
+                items: [
+                    ...defaultProps.items
+                ],
                 navLinkClass: 'NavLink'
             }
         }
