@@ -284,11 +284,31 @@ describe('Navbar', () => {
         });
 
         it('login', () => {
-            throw new Error();
+            mockUseMediaQuery.mockImplementation(() => true);
+            const wrapper: ReactWrapper = mount(
+                <TestRouter>
+                    <TestNavbar showAuthBtn />
+                </TestRouter>
+            );
+
+            wrapper.find('ForwardRef(Button)#navbar-auth-btn').simulate('click');
+
+            expect(login).toHaveBeenCalled();
+            expect(logout).not.toHaveBeenCalled();
         });
 
         it('logout', () => {
-            throw new Error();
+            mockUseMediaQuery.mockImplementation(() => true);
+            const wrapper: ReactWrapper = mount(
+                <TestRouter>
+                    <TestNavbar showAuthBtn isAuth />
+                </TestRouter>
+            );
+
+            wrapper.find('ForwardRef(Button)#navbar-auth-btn').simulate('click');
+
+            expect(login).not.toHaveBeenCalled();
+            expect(logout).toHaveBeenCalled();
         });
     });
 });
