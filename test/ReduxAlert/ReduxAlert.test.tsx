@@ -21,6 +21,7 @@ import ReduxAlert, { Props as ReduxAlertProps } from '../../src/ReduxAlert';
 import createTestReduxProvider from '../utils/createTestReduxProvider';
 import createTestComponent from '../utils/createTestComponent';
 import { mount, ReactWrapper } from 'enzyme';
+import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
 const defaultProps: ReduxAlertProps = {
     id: 'the-alert',
@@ -39,6 +40,56 @@ type StoreStateType = typeof defaultStoreState;
 const TestReduxProvider = createTestReduxProvider<StoreStateType>(defaultStoreState);
 const TestReduxAlert = createTestComponent<ReduxAlertProps>(defaultProps, ReduxAlert);
 
+const rootDivItem: RenderedItem = {
+    selector: 'div#the-alert-container',
+    values: [{}]
+};
+
+const collapseItem: RenderedItem = {
+    selector: 'ForwardRef(Collapse)',
+    values: [
+        {
+            props: {
+                in: true
+            }
+        }
+    ]
+};
+
+const muiAlertItem: RenderedItem = {
+    selector: 'ForwardRef(Alert)',
+    values: [
+        {
+            props: {
+                id: 'the-alert',
+                severity: 'success',
+                onClose: expect.any(Function)
+            }
+        }
+    ]
+};
+
+const muiAlertTitleItem: RenderedItem = {
+    selector: 'ForwardRef(AlertTitle)',
+    values: [
+        {
+            props: {
+                id: 'the-alert-title'
+            },
+            text: 'Success'
+        }
+    ]
+};
+
+const muiAlertMsgItem: RenderedItem = {
+    selector: 'span#the-alert-message',
+    values: [
+        {
+            text: 'Hello World'
+        }
+    ]
+};
+
 describe('ReduxAlert', () => {
     describe('rendering', () => {
         it('renders alert', () => {
@@ -48,7 +99,15 @@ describe('ReduxAlert', () => {
                 </TestReduxProvider>
             );
 
-            console.log(wrapper.debug()); // TODO delete this
+            const items: RenderedItem[] = [
+                rootDivItem,
+                collapseItem,
+                muiAlertItem,
+                muiAlertTitleItem,
+                muiAlertMsgItem
+            ];
+
+            renderingValidator(wrapper, items);
         });
     });
 
