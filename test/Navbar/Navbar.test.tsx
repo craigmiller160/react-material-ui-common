@@ -129,7 +129,7 @@ describe('Navbar', () => {
                 </TestRouter>
             );
 
-            console.log(wrapper.debug()); // TODO delete this
+            // console.log(wrapper.debug()); // TODO delete this
 
             const items: RenderedItem[] = [
                 appbarItem,
