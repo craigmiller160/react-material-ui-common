@@ -22,7 +22,6 @@ import createTestComponent from '../utils/createTestComponent';
 import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
 import { mount, ReactWrapper } from 'enzyme';
 import { useMediaQuery } from '@material-ui/core';
-import Mock = jest.Mock;
 import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 import { act } from 'react-dom/test-utils';
 
@@ -34,7 +33,7 @@ jest.mock('@material-ui/core', () => {
     };
 });
 
-const mockUseMediaQuery = useMediaQuery as Mock;
+const mockUseMediaQuery = useMediaQuery as jest.Mock;
 
 const login = jest.fn();
 const logout = jest.fn();

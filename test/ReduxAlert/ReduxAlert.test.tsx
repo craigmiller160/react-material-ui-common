@@ -16,7 +16,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from 'react';
+// TODO remove eslint disable
+import React from 'react'; // eslint-disable-line
 
 describe('ReduxAlert', () => {
     describe('rendering', () => {

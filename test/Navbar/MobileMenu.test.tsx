@@ -199,6 +199,7 @@ describe('MobileMenu', () => {
                 titleNavLinkItem,
                 titleItem,
                 listItems,
+                navLinkItems,
                 noAuthBtnItem
             ];
 

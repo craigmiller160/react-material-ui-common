@@ -52,6 +52,7 @@ const renderingValidator = (wrapper: ReactWrapper, items: Array<RenderedItem>) =
             expect(foundItem).toHaveLength(item.values.length);
         } catch (ex) {
             const message = `Incorrect number of matches for item: ${item.selector}`;
+            throw new TraceError(message, ex);
         }
 
         item.values.forEach((value, index) => {
