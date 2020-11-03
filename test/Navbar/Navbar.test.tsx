@@ -39,7 +39,7 @@ const login = jest.fn();
 const logout = jest.fn();
 
 const defaultProps: NavbarProps = {
-    isAuth: true,
+    isAuth: false,
     showAuthBtn: false,
     login,
     logout,
@@ -97,12 +97,12 @@ const noMenuIconItem: RenderedItem = {
     values: []
 };
 
-const navbarItems: RenderedItem = {
+const createNavbarItems = (isAuth: boolean): RenderedItem => ({
     selector: 'NavbarItems',
     values: [
         {
             props: {
-                isAuth: true,
+                isAuth,
                 items: [
                     ...defaultProps.items
                 ],
@@ -110,10 +110,56 @@ const navbarItems: RenderedItem = {
             }
         }
     ]
-};
+});
 
 const noNavbarItems: RenderedItem = {
     selector: 'NavbarItems',
+    values: []
+};
+
+const titleNavLinkItem: RenderedItem = {
+    selector: 'NavLink#navbar-title-btn',
+    values: [
+        {
+            props: {
+                id: 'navbar-title-btn',
+                className: 'NavLink',
+                exact: true
+            }
+        }
+    ]
+};
+
+const titleItem: RenderedItem = {
+    selector: '#navbar-title-btn ForwardRef(Typography)',
+    values: [
+        {
+            props: {
+                variant: 'h6',
+                noWrap: true
+            },
+            text: 'Application'
+        }
+    ]
+};
+
+const createAuthBtnItem = (isAuth: boolean): RenderedItem => ({
+    selector: 'ForwardRef(Button)#navbar-auth-btn',
+    values: [
+        {
+            props: {
+                id: 'navbar-auth-btn',
+                variant: 'text',
+                color: 'inherit',
+                onClick: expect.any(Function)
+            },
+            text: isAuth ? 'Logout' : 'Login'
+        }
+    ]
+});
+
+const noAuthBtnItem: RenderedItem = {
+    selector: 'ForwardRef(Button)#navbar-auth-btn',
     values: []
 };
 
@@ -131,18 +177,39 @@ describe('Navbar', () => {
                 </TestRouter>
             );
 
-            // console.log(wrapper.debug()); // TODO delete this
-
             const items: RenderedItem[] = [
                 appbarItem,
                 noMenuIconItem,
-                navbarItems
+                titleNavLinkItem,
+                titleItem,
+                createNavbarItems(false),
+                noAuthBtnItem
             ];
 
             renderingValidator(wrapper, items);
         });
 
-        it('renders not for phone, with showAuthBtn', () => {
+        it('renders not for phone, with showAuthBtn and isAuth = true', () => {
+            mockUseMediaQuery.mockImplementation(() => true);
+            const wrapper: ReactWrapper = mount(
+                <TestRouter>
+                    <TestNavbar showAuthBtn isAuth />
+                </TestRouter>
+            );
+
+            const items: RenderedItem[] = [
+                appbarItem,
+                noMenuIconItem,
+                titleNavLinkItem,
+                titleItem,
+                createNavbarItems(true),
+                createAuthBtnItem(true)
+            ];
+
+            renderingValidator(wrapper, items);
+        });
+
+        it('renders not for phone, with showAuthBtn and isAuth = false', () => {
             mockUseMediaQuery.mockImplementation(() => true);
             const wrapper: ReactWrapper = mount(
                 <TestRouter>
@@ -153,7 +220,10 @@ describe('Navbar', () => {
             const items: RenderedItem[] = [
                 appbarItem,
                 noMenuIconItem,
-                navbarItems
+                titleNavLinkItem,
+                titleItem,
+                createNavbarItems(false),
+                createAuthBtnItem(false)
             ];
 
             renderingValidator(wrapper, items);
@@ -170,7 +240,10 @@ describe('Navbar', () => {
             const items: RenderedItem[] = [
                 appbarItem,
                 menuIconItem,
-                noNavbarItems
+                titleNavLinkItem,
+                titleItem,
+                noNavbarItems,
+                noAuthBtnItem
             ];
 
             renderingValidator(wrapper, items);
@@ -183,6 +256,14 @@ describe('Navbar', () => {
         });
 
         it('handleMenuClose', () => {
+            throw new Error();
+        });
+
+        it('login', () => {
+            throw new Error();
+        });
+
+        it('logout', () => {
             throw new Error();
         });
     });
