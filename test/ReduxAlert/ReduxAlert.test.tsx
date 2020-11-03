@@ -37,7 +37,7 @@ const defaultStoreState = {
 };
 type StoreStateType = typeof defaultStoreState;
 
-const TestReduxProvider = createTestReduxProvider<StoreStateType>(defaultStoreState);
+const [TestReduxProvider, storeHandler] = createTestReduxProvider<StoreStateType>(defaultStoreState);
 const TestReduxAlert = createTestComponent<ReduxAlertProps>(defaultProps, ReduxAlert);
 
 const rootDivItem: RenderedItem = {
@@ -121,7 +121,12 @@ describe('ReduxAlert', () => {
 
             (wrapper.find('ForwardRef(Alert)').props() as any).onClose();
 
-            // TODO how to access store?
+            expect(storeHandler.store?.getActions()).toEqual([
+                {
+                    type: 'alert/hideAlert',
+                    payload: undefined
+                }
+            ])
         });
     });
 });
