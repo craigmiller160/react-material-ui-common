@@ -126,7 +126,7 @@ describe('ReduxAlert', () => {
                     type: 'alert/hideAlert',
                     payload: undefined
                 }
-            ])
+            ]);
         });
     });
 });
