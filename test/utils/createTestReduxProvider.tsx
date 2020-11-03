@@ -18,16 +18,7 @@
 
 import React from 'react';
 
-describe('ReduxAlert', () => {
-    describe('rendering', () => {
-        it('renders alert', () => {
-            throw new Error();
-        });
-    });
 
-    describe('behavior', () => {
-        it('closes alert', () => {
-            throw new Error();
-        });
-    });
-});
+const createTestReduxProvider = <State extends object>(defaultState: State) => (state: Partial<State>) => {
+
+};
