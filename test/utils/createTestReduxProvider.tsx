@@ -16,26 +16,36 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React, { PropsWithChildren } from 'react';
+import React, { ComponentType, PropsWithChildren } from 'react';
 import thunk from 'redux-thunk';
-import configureStore from 'redux-mock-store';
+import configureStore, { MockStoreEnhanced } from 'redux-mock-store';
 import { Provider } from 'react-redux';
 
-const createMockStore = configureStore([thunk]);
+export interface StoreHandler<State> {
+    store?: MockStoreEnhanced<State>;
+}
 
-const createTestReduxProvider = <State extends object>(defaultState: State) => (stateProps: Partial<PropsWithChildren<State>>) => {
-    const actualState: State = {
-        ...defaultState,
-        ...stateProps
+const createTestReduxProvider = <State extends object>(defaultState: State): [ComponentType<Partial<PropsWithChildren<State>>>, StoreHandler<State>] => {
+    const storeHandler: StoreHandler<State> = {};
+    const createMockStore = configureStore<State>([thunk]);
+
+    const TestReduxProvider = (stateProps: Partial<PropsWithChildren<State>>) => {
+        const actualState: State = {
+            ...defaultState,
+            ...stateProps
+        };
+
+        const store: MockStoreEnhanced<State> = createMockStore(actualState);
+        storeHandler.store = store;
+
+        return (
+            <Provider store={ store }>
+                { stateProps.children }
+            </Provider>
+        );
     };
 
-    const store = createMockStore(actualState);
-
-    return (
-        <Provider store={ store }>
-            { stateProps.children }
-        </Provider>
-    );
-};
+    return [TestReduxProvider, storeHandler];
+}
 
 export default createTestReduxProvider;

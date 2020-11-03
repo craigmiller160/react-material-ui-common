@@ -52,7 +52,6 @@ const ReduxAlert = (props: Props) => {
                 </MuiAlert>
             </Collapse>
         </div>
-
     );
 };
 

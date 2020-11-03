@@ -113,7 +113,15 @@ describe('ReduxAlert', () => {
 
     describe('behavior', () => {
         it('closes alert', () => {
-            throw new Error();
+            const wrapper: ReactWrapper = mount(
+                <TestReduxProvider>
+                    <TestReduxAlert />
+                </TestReduxProvider>
+            );
+
+            (wrapper.find('ForwardRef(Alert)').props() as any).onClose();
+
+            // TODO how to access store?
         });
     });
 });
