@@ -24,6 +24,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { useMediaQuery } from '@material-ui/core';
 import Mock = jest.Mock;
 import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
+import { act } from 'react-dom/test-utils';
 
 jest.mock('@material-ui/core', () => {
     const materialUiCore = jest.requireActual('@material-ui/core');
@@ -275,12 +276,35 @@ describe('Navbar', () => {
     });
 
     describe('behavior', () => {
-        it('handleMenuOpen', () => {
-            throw new Error();
-        });
+        it('handleMenuOpen & handleMenuClose', () => {
+            mockUseMediaQuery.mockImplementation(() => false);
+            const wrapper: ReactWrapper = mount(
+                <TestRouter>
+                    <TestNavbar />
+                </TestRouter>
+            );
 
-        it('handleMenuClose', () => {
-            throw new Error();
+            expect(wrapper.find('MobileMenu').props()).toEqual(expect.objectContaining({
+                menuOpen: false
+            }));
+
+            act(() => {
+                wrapper.find('ForwardRef(IconButton)#navbar-menu-btn').simulate('click');
+            });
+            wrapper.update();
+
+            expect(wrapper.find('MobileMenu').props()).toEqual(expect.objectContaining({
+                menuOpen: true
+            }));
+
+            act(() => {
+                (wrapper.find('MobileMenu').props() as any).handleMenuClose();
+            });
+            wrapper.update();
+
+            expect(wrapper.find('MobileMenu').props()).toEqual(expect.objectContaining({
+                menuOpen: false
+            }));
         });
 
         it('login', () => {
