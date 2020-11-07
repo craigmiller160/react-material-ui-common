@@ -17,9 +17,9 @@
  */
 
 import React, { PropsWithChildren } from 'react';
+import { mount, ReactWrapper } from 'enzyme';
 import BaseDialog, { Props as BaseDialogProps } from '../../../src/Dialog/BaseDialog';
 import createTestComponent from '../../utils/createTestComponent';
-import { mount, ReactWrapper } from 'enzyme';
 import renderingValidator, { RenderedItem } from '../../utils/renderingValidator';
 
 const actionClick = jest.fn();
@@ -63,7 +63,7 @@ const dialogTitle: RenderedItem = {
 
 const dialogContent: RenderedItem = {
     selector: 'ForwardRef(DialogContent)',
-    values: [{}]
+    values: [ {} ]
 };
 
 const dialogActions: RenderedItem = {

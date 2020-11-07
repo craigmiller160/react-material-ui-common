@@ -17,9 +17,9 @@
  */
 
 import React from 'react';
+import { mount, ReactWrapper } from 'enzyme';
 import ConfirmDialog, { Props as ConfirmDialogProps } from '../../../src/Dialog/ConfirmDialog';
 import createTestComponent from '../../utils/createTestComponent';
-import { mount, ReactWrapper } from 'enzyme';
 import renderingValidator, { RenderedItem } from '../../utils/renderingValidator';
 
 const onConfirm = jest.fn();

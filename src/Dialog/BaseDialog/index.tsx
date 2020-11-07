@@ -47,7 +47,7 @@ const BaseDialog = (props: PropsWithChildren<Props>) => {
         className
     } = props;
 
-    const rootClasses = [styles.BaseDialog, className]
+    const rootClasses = [ styles.BaseDialog, className ]
         .filter((name) => name)
         .join(' ');
 

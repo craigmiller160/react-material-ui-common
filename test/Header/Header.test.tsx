@@ -72,7 +72,7 @@ const noH5Item: RenderedItem = {
 
 const hrItem: RenderedItem = {
     selector: 'hr',
-    values: [{}]
+    values: [ {} ]
 };
 
 const noHrItem: RenderedItem = {

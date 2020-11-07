@@ -17,10 +17,10 @@
  */
 
 import React from 'react';
+import { mount, ReactWrapper } from 'enzyme';
 import MobileMenu, { Props as MobileMenuProps } from '../../src/Navbar/MobileMenu';
 import createTestComponent from '../utils/createTestComponent';
 import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
-import { mount, ReactWrapper } from 'enzyme';
 import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
 const handleMenuClose = jest.fn();
@@ -33,7 +33,7 @@ const defaultProps: MobileMenuProps = {
     authBtnText: 'Auth Btn',
     isAuth: false,
     title: 'Application',
-    items:  [
+    items: [
         {
             to: '/one/abc',
             text: 'One',
@@ -49,7 +49,7 @@ const defaultProps: MobileMenuProps = {
 };
 
 const defaultRouterOptions: RouterOptions = {
-    initialEntries: ['/one/abc'],
+    initialEntries: [ '/one/abc' ],
     initialIndex: 0
 };
 
@@ -245,7 +245,7 @@ describe('MobileMenu', () => {
                 </TestRouter>
             );
 
-            const props: any = wrapper.find("ForwardRef(Drawer)").props();
+            const props: any = wrapper.find('ForwardRef(Drawer)').props();
             props?.onClose();
 
             expect(handleMenuClose).toHaveBeenCalled();

@@ -41,7 +41,7 @@ interface State {
 const Navbar = (props: Props) => {
     const theme = useTheme();
     const isNotPhone = useMediaQuery(theme.breakpoints.up('md'));
-    const [state, setState] = useState<State>({
+    const [ state, setState ] = useState<State>({
         menuOpen: false
     });
 

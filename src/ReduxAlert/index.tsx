@@ -19,9 +19,9 @@
 import React from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import MuiAlert from '@material-ui/lab/Alert';
-import alertSlice, { AlertState } from './slice';
 import AlertTitle from '@material-ui/lab/AlertTitle';
 import Collapse from '@material-ui/core/Collapse';
+import alertSlice, { AlertState } from './slice';
 
 export interface Props {
     id?: string;
@@ -38,7 +38,7 @@ const capitalize = (text: string) => {
 const ReduxAlert = (props: Props) => {
     const alertStateName: string = props.alertStateName ?? 'alert';
     const dispatch = useDispatch();
-    const alertState = useSelector<RootState,AlertState>((state) => state[alertStateName], shallowEqual);
+    const alertState = useSelector<RootState, AlertState>((state) => state[alertStateName], shallowEqual);
     return (
         <div id={ `${props.id}-container` }>
             <Collapse in={ alertState.show }>

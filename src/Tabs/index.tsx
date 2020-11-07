@@ -46,7 +46,7 @@ const Tabs = (props: Props) => {
     const match = useRouteMatch();
     const tabIndex = props.tabs.findIndex((tab) =>
         tabPathMatch(location.pathname, tab.path));
-    const [state, setState] = useState<State>({
+    const [ state, setState ] = useState<State>({
         selectedTab: tabIndex >= 0 ? tabIndex : 0
     });
 
@@ -55,7 +55,7 @@ const Tabs = (props: Props) => {
             ...prevState,
             selectedTab: newValue
         }));
-        const path = props.tabs[newValue].path;
+        const { path } = props.tabs[newValue];
         const uri = `${match.url}${path}`;
         history.push(uri);
     };
