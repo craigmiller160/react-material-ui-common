@@ -29,8 +29,7 @@
   },
   "scripts": {
     "build": "node scripts/clean.js && tsc && node scripts/copy-resources.js",
-    "lint": "eslint -c eslint.config.js src test --no-error-on-unmatched-pattern",
-    "lint2": "web-config-scripts lint",
+    "lint": "web-config-scripts lint",
     "test": "jest",
     "validate": "yon run lint && yon run test"
   },
