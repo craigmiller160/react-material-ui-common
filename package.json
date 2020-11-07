@@ -6,7 +6,6 @@
   "license": "MIT",
   "sideEffects": "false",
   "devDependencies": {
-    "@craigmiller160/eslint-config-cra-extension": "1.2.1",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/react-dom": "^16.9.9",
@@ -38,6 +37,7 @@
     "lib"
   ],
   "dependencies": {
+    "@craigmiller160/web-config": "file:.yalc/@craigmiller160/web-config",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
