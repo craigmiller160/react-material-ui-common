@@ -25,9 +25,6 @@
   "files": [
     "lib"
   ],
-  "resolutions": {
-    "string.prototype.trim": "1.2.1"
-  },
   "dependencies": {
     "@craigmiller160/web-config": "file:.yalc/@craigmiller160/web-config",
     "@material-ui/core": "^4.11.0",
