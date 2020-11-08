@@ -24,7 +24,7 @@
   "scripts": {
     "build": "node scripts/clean.js && tsc && node scripts/copy-resources.js",
     "lint": "web-config-scripts lint",
-    "test": "jest",
+    "test": "web-config-scripts test",
     "validate": "yon run lint && yon run test"
   },
   "files": [
