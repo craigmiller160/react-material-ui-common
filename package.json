@@ -23,6 +23,9 @@
   "files": [
     "lib"
   ],
+  "resolutions": {
+    "es-abstract": "^1.18.0-next.1"
+  },
   "dependencies": {
     "@craigmiller160/web-config": "file:.yalc/@craigmiller160/web-config",
     "@material-ui/core": "^4.11.0",
