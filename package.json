@@ -16,9 +16,7 @@
     "enzyme-adapter-react-16": "^1.15.5",
     "react-dom": "^16.13.1",
     "redux-mock-store": "^1.5.4",
-    "trace-error": "^1.0.3",
-    "typescript": "^4.0.3",
-    "yarn-or-npm": "^3.0.1"
+    "trace-error": "^1.0.3"
   },
   "scripts": {
     "build": "web-config-scripts buildTSLib",
