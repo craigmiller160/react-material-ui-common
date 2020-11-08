@@ -29,7 +29,7 @@ export interface PublicProps {
 }
 
 interface HeaderProps extends PublicProps {
-    variant?: Variant;
+    variant: Variant;
 }
 
 const BaseHeader = ({ title, variant, noDivider, id }: HeaderProps) => (

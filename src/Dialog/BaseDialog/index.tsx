@@ -68,7 +68,7 @@ const BaseDialog = (props: PropsWithChildren<Props>) => {
                         return (
                             <Button
                                 id={ btnId }
-                                key={ index }
+                                key={ btnId }
                                 color="primary"
                                 onClick={ action.onClick }
                             >

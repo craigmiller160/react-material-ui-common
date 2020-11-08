@@ -37,7 +37,7 @@ const NavbarItems = (props: Props) => {
     return (
         <>
             {
-                props.items.map((item, index) => {
+                props.items.map((item) => {
                     const active = matchPath(location.pathname, {
                         path: item.to,
                         exact: item.exact
@@ -50,7 +50,7 @@ const NavbarItems = (props: Props) => {
                     return (
                         <NavLink
                             id={ `navbar-item-${idString}` }
-                            key={ index }
+                            key={ idString }
                             to={ item.to }
                             className={ props.navLinkClass }
                         >

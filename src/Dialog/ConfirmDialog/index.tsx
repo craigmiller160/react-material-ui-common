@@ -50,7 +50,8 @@ const ConfirmDialog = (props: Props) => {
             id={ id }
             open={ open }
             title={ title }
-            actions={ actions }>
+            actions={ actions }
+        >
             <DialogContentText>{ message }</DialogContentText>
         </BaseDialog>
     );
