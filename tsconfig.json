@@ -1,23 +1,6 @@
 {
+  "extends": "@craigmiller160/web-config/typescript/tsconfig.esmodule.json",
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "react",
-    "declaration": true,
     "outDir": "./lib"
   },
   "include": [
@@ -25,6 +8,7 @@
   ],
   "exclude": [
     "node_modules",
-    "lib"
+    "lib",
+    ".yalc"
   ]
 }
