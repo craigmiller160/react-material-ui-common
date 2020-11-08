@@ -24,7 +24,7 @@
     "build": "web-config-scripts buildTSLib",
     "lint": "web-config-scripts lint",
     "test": "web-config-scripts test",
-    "validate": "yon run lint && yon run test"
+    "validate": "web-config-scripts validate"
   },
   "files": [
     "lib"
