@@ -61,9 +61,9 @@ const drawerItem: RenderedItem = {
     values: [
         {
             props: {
-                classes: {
+                classes: expect.objectContaining({
                     paper: expect.stringContaining('MenuPrimary')
-                },
+                }),
                 className: 'MobileMenu',
                 open: true,
                 onClose: expect.any(Function)
