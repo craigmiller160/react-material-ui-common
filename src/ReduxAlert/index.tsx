@@ -28,7 +28,7 @@ export interface Props {
     alertStateName?: string;
 }
 
-type RootState = { [key: string]: AlertState };
+type RootState = { [key: string]: AlertState; };
 
 const capitalize = (text: string) => {
     const firstLetter = text.substring(0, 1).toUpperCase();

@@ -27,7 +27,7 @@ import classes from './Tabs.module.scss';
 
 export interface Props {
     id?: string;
-    tabs: TabConfig[]
+    tabs: TabConfig[];
 }
 
 interface State {
