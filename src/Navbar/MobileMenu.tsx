@@ -17,8 +17,11 @@
  */
 
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Drawer, ListItem, ListItemText, Typography } from '@material-ui/core';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import Drawer from '@material-ui/core/Drawer';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Typography from '@material-ui/core/Typography';
 import { matchPath, NavLink, useLocation } from 'react-router-dom';
 import { NavbarItem } from '../types';
 import styles from './MobileMenu.module.scss';

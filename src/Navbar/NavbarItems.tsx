@@ -18,7 +18,7 @@
 
 import React from 'react';
 import { matchPath, NavLink, useLocation } from 'react-router-dom';
-import { Button } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 import { NavbarItem } from '../types';
 
 export interface Props {

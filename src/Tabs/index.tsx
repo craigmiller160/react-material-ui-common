@@ -19,7 +19,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import MuiTabs from '@material-ui/core/Tabs';
 import { Redirect, Route, Switch, useHistory, useLocation, useRouteMatch } from 'react-router';
-import { Tab } from '@material-ui/core';
+import Tab from '@material-ui/core/Tab';
 import { TabConfig } from '../types';
 import classes from './Tabs.module.scss';
 

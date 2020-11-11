@@ -18,7 +18,7 @@
 
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import { useMediaQuery } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { act } from 'react-dom/test-utils';
 import Navbar, { Props as NavbarProps } from '../../src/Navbar';
 import createTestComponent from '../utils/createTestComponent';

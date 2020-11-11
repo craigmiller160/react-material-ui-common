@@ -17,9 +17,15 @@
  */
 
 import React, { useState } from 'react';
-import { AppBar, Button, IconButton, Toolbar, Typography, useMediaQuery, useTheme } from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import MenuIcon from '@material-ui/icons/Menu';
 import { NavLink } from 'react-router-dom';
+import useTheme from '@material-ui/core/styles/useTheme';
 import styles from './NavBar.module.scss';
 import NavbarItems from './NavbarItems';
 import { NavbarItem } from '../types';
