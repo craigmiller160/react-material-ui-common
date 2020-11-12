@@ -6,6 +6,7 @@
   "license": "MIT",
   "sideEffects": "false",
   "devDependencies": {
+    "@craigmiller160/web-config": "^2.0.2",
     "@types/react-dom": "^16.9.9",
     "@types/react-redux": "^7.1.11",
     "@types/react-router": "^5.1.8",
