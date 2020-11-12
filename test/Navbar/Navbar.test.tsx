@@ -25,12 +25,8 @@ import createTestComponent from '../utils/createTestComponent';
 import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
 import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
-jest.mock('@material-ui/core', () => {
-    const materialUiCore = jest.requireActual('@material-ui/core');
-    return {
-        ...materialUiCore,
-        useMediaQuery: jest.fn()
-    };
+jest.mock('@material-ui/core/useMediaQuery', () => {
+    return jest.fn();
 });
 
 const mockUseMediaQuery = useMediaQuery as jest.Mock;
