@@ -1,32 +1,44 @@
 {
   "name": "@craigmiller160/react-material-ui-common",
-  "version": "1.0.3",
+  "version": "1.1.0-beta",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "license": "MIT",
   "sideEffects": "false",
   "devDependencies": {
-    "@craigmiller160/eslint-config-cra-extension": "^1.2.0",
-    "@types/react-redux": "^7.1.9",
+    "@craigmiller160/web-config": "^2.0.2",
+    "@types/react-dom": "^16.9.9",
+    "@types/react-redux": "^7.1.11",
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.6",
-    "glob": "^7.1.6",
-    "typescript": "^4.0.3"
+    "@types/redux-mock-store": "^1.0.2",
+    "redux-mock-store": "^1.5.4",
+    "trace-error": "^1.0.3"
   },
   "scripts": {
-    "build": "node scripts/clean.js && tsc && node scripts/copy-resources.js",
-    "lint": "eslint -c eslint.config.js src --no-error-on-unmatched-pattern"
+    "build": "web-config-scripts buildTSLib",
+    "lint": "web-config-scripts lint",
+    "test": "web-config-scripts test",
+    "validate": "web-config-scripts validate"
   },
   "files": [
-    "lib"
+    "lib",
+    ".yalc"
   ],
+  "resolutions": {
+    "es-abstract": "^1.18.0-next.1"
+  },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@reduxjs/toolkit": "^1.4.0",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-redux": "^7.2.2",
     "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   }
 }

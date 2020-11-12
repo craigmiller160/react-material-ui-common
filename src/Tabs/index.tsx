@@ -19,13 +19,15 @@
 import React, { ChangeEvent, useState } from 'react';
 import MuiTabs from '@material-ui/core/Tabs';
 import { Redirect, Route, Switch, useHistory, useLocation, useRouteMatch } from 'react-router';
-import { Tab } from '@material-ui/core';
+import Tab from '@material-ui/core/Tab';
 import { TabConfig } from '../types';
+import classes from './Tabs.module.scss';
 
 // Only designed at the moment to work with tabs at the end of the react router path
 
-interface Props {
-    tabs: TabConfig[]
+export interface Props {
+    id?: string;
+    tabs: TabConfig[];
 }
 
 interface State {
@@ -39,12 +41,16 @@ const tabPathMatch = (pathname: string, tabPath: string): boolean => {
 };
 
 const Tabs = (props: Props) => {
+    const {
+        tabs,
+        id
+    } = props;
     const location = useLocation();
     const history = useHistory();
     const match = useRouteMatch();
-    const tabIndex = props.tabs.findIndex((tab) =>
+    const tabIndex = tabs.findIndex((tab) =>
         tabPathMatch(location.pathname, tab.path));
-    const [state, setState] = useState<State>({
+    const [ state, setState ] = useState<State>({
         selectedTab: tabIndex >= 0 ? tabIndex : 0
     });
 
@@ -53,15 +59,14 @@ const Tabs = (props: Props) => {
             ...prevState,
             selectedTab: newValue
         }));
-        const path = props.tabs[newValue].path;
+        const { path } = tabs[newValue];
         const uri = `${match.url}${path}`;
         history.push(uri);
     };
 
     return (
-        <div className="TabsContainer">
+        <div id={ id } className={ classes.TabsContainer }>
             <MuiTabs
-                className="Tabs"
                 value={ state.selectedTab }
                 indicatorColor="primary"
                 textColor="primary"
@@ -69,16 +74,19 @@ const Tabs = (props: Props) => {
                 onChange={ handleTabChange }
             >
                 {
-                    props.tabs.map((tab, index) => (
-                        <Tab key={ index } label={ tab.label } />
-                    ))
+                    tabs.map((tab, index) => {
+                        const tabId = tab.id ?? `tab_${index}`;
+                        return (
+                            <Tab id={ tabId } key={ tabId } label={ tab.label } />
+                        );
+                    })
                 }
             </MuiTabs>
             <Switch>
                 {
-                    props.tabs.map((tab, index) => (
+                    tabs.map((tab, index) => (
                         <Route
-                            key={ index }
+                            key={ tab.path }
                             path={ `${match.path}${tab.path}` }
                             exact
                             component={ tab.component }
@@ -86,8 +94,8 @@ const Tabs = (props: Props) => {
                     ))
                 }
                 {
-                    props.tabs.length > 0 &&
-                    <Redirect to={ `${match.path}${props.tabs[0].path}` } />
+                    tabs.length > 0 &&
+                    <Redirect to={ `${match.path}${tabs[0].path}` } />
                 }
             </Switch>
         </div>

@@ -19,15 +19,16 @@
 import React from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import MuiAlert from '@material-ui/lab/Alert';
-import alertSlice, { AlertState } from './slice';
 import AlertTitle from '@material-ui/lab/AlertTitle';
 import Collapse from '@material-ui/core/Collapse';
+import alertSlice, { AlertState } from './slice';
 
-interface Props {
+export interface Props {
+    id?: string;
     alertStateName?: string;
 }
 
-type RootState = { [key: string]: AlertState };
+type RootState = { [key: string]: AlertState; };
 
 const capitalize = (text: string) => {
     const firstLetter = text.substring(0, 1).toUpperCase();
@@ -37,17 +38,20 @@ const capitalize = (text: string) => {
 const ReduxAlert = (props: Props) => {
     const alertStateName: string = props.alertStateName ?? 'alert';
     const dispatch = useDispatch();
-    const alertState = useSelector<RootState,AlertState>((state) => state[alertStateName], shallowEqual);
+    const alertState = useSelector<RootState, AlertState>((state) => state[alertStateName], shallowEqual);
     return (
-        <Collapse in={ alertState.show }>
-            <MuiAlert
-                severity={ alertState.type }
-                onClose={ () => dispatch(alertSlice.actions.hideAlert()) }
-            >
-                <AlertTitle>{ capitalize(alertState.type) }</AlertTitle>
-                { alertState.message }
-            </MuiAlert>
-        </Collapse>
+        <div id={ `${props.id}-container` }>
+            <Collapse in={ alertState.show }>
+                <MuiAlert
+                    id={ props.id }
+                    severity={ alertState.type }
+                    onClose={ () => dispatch(alertSlice.actions.hideAlert()) }
+                >
+                    <AlertTitle id={ `${props.id}-title` }>{ capitalize(alertState.type) }</AlertTitle>
+                    <span id={ `${props.id}-message` }>{ alertState.message }</span>
+                </MuiAlert>
+            </Collapse>
+        </div>
     );
 };
 

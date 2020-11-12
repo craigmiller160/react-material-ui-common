@@ -1,4 +1,4 @@
-/*
+/*!
  * material-ui-common
  * Copyright (C) 2020 Craig Miller
  *
@@ -16,17 +16,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const fs = require('fs');
-const path = require('path');
-const glob = require('glob');
-
-const cwd = process.cwd();
-const libPath = path.resolve(cwd, 'lib');
-const srcPath = path.resolve(cwd, 'src');
-
-glob.sync(`${srcPath}/**/*.scss`)
-    .map((file) => {
-        const relative = file.replace(srcPath, '');
-        return [file, `${libPath}${relative}`];
-    })
-    .forEach(([src, dest]) => fs.copyFileSync(src, dest));
+.TabsContainer {
+  margin-bottom: 2rem;
+}

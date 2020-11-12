@@ -17,11 +17,11 @@
  */
 
 import React from 'react';
-import { NavbarItem } from '../types';
 import { matchPath, NavLink, useLocation } from 'react-router-dom';
-import { Button } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import { NavbarItem } from '../types';
 
-interface Props {
+export interface Props {
     isAuth: boolean;
     items: Array<NavbarItem>;
     navLinkClass: string;
@@ -37,16 +37,20 @@ const NavbarItems = (props: Props) => {
     return (
         <>
             {
-                props.items.map((item, index) => {
+                props.items.map((item) => {
                     const active = matchPath(location.pathname, {
                         path: item.to,
                         exact: item.exact
                     });
 
+                    const idString = item.to
+                        .replace(/^\//, '')
+                        .replace(/\//g, '-');
+
                     return (
                         <NavLink
-                            id={ `navbar-item-${item.to.replaceAll('/', '-')}` }
-                            key={ index }
+                            id={ `navbar-item-${idString}` }
+                            key={ idString }
                             to={ item.to }
                             className={ props.navLinkClass }
                         >

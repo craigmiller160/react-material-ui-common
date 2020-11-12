@@ -16,12 +16,20 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const fs = require('fs');
-const path = require('path');
+import React, { ComponentType } from 'react';
 
-const cwd = process.cwd();
-const libPath = path.resolve(cwd, 'lib');
+const createTestComponent = <Props extends object>(defaultProps: Props, component: ComponentType<Props>) =>
+    (props: Partial<Props>) => {
+        const actualProps: Props = {
+            ...defaultProps,
+            ...props
+        };
 
-if (fs.existsSync(libPath)) {
-    fs.rmdirSync(libPath, { recursive: true });
-}
+        const Component: ComponentType<Props> = component;
+
+        return (
+            <Component { ...actualProps } />
+        );
+    };
+
+export default createTestComponent;

@@ -17,13 +17,16 @@
  */
 
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { NavbarItem } from '../types';
-import { Drawer, ListItem, ListItemText, Typography } from '@material-ui/core';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import Drawer from '@material-ui/core/Drawer';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Typography from '@material-ui/core/Typography';
 import { matchPath, NavLink, useLocation } from 'react-router-dom';
+import { NavbarItem } from '../types';
 import styles from './MobileMenu.module.scss';
 
-interface Props {
+export interface Props {
     menuOpen: boolean;
     handleMenuClose: () => void;
     authAction: () => void;
@@ -74,24 +77,29 @@ const MobileMenu = (props: Props) => {
                 </Typography>
             </NavLink>
             {
-                props.isAuth && props.items.map((item, index) => {
+                props.isAuth && props.items.map((item) => {
                     const isMatch: boolean = !!matchPath(location.pathname, {
                         path: item.to,
                         exact: item.exact
                     });
 
-                    const activeClass = isMatch ? ' active' : '';
-                    const itemClass = `${styles.item} ${activeClass}`;
+                    const activeClass = isMatch ? 'active' : '';
+                    const itemClass = `menu-item ${styles.item} ${activeClass}`;
+
+                    const idString = item.to
+                        .replace(/^\//, '')
+                        .replace(/\//g, '-');
 
                     return (
                         <ListItem
-                            id={ `navbar-mobile-item-${item.to.replaceAll('/', '-')}` }
-                            key={ index }
+                            id={ `navbar-mobile-item-${idString}` }
+                            key={ idString }
                             className={ itemClass }
                             onClick={ props.handleMenuClose }
                         >
                             <NavLink
                                 to={ item.to }
+                                exact={ item.exact }
                                 className={ styles.NavLink }
                             >
                                 <ListItemText>{ item.text }</ListItemText>

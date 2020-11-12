@@ -25,6 +25,7 @@ export interface NavbarItem {
 }
 
 export interface TabConfig {
+    id?: string;
     label: string;
     path: string;
     component: ComponentType<any>;

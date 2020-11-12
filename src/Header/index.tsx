@@ -18,23 +18,22 @@
 
 import React from 'react';
 import Divider from '@material-ui/core/Divider';
-import classes from './Header.module.scss';
 import Typography from '@material-ui/core/Typography';
 import { Variant } from '@material-ui/core/styles/createTypography';
+import classes from './Header.module.scss';
 
-interface HeaderProps {
-    title: string;
-    variant?: Variant;
-    noDivider?: boolean;
-}
-
-interface PublicProps {
+export interface PublicProps {
     title: string;
     noDivider?: boolean;
+    id?: string;
 }
 
-const Index = ({ title, variant, noDivider }: HeaderProps) => (
-    <div className={ classes.Header }>
+interface HeaderProps extends PublicProps {
+    variant: Variant;
+}
+
+const BaseHeader = ({ title, variant, noDivider, id }: HeaderProps) => (
+    <div id={ id } className={ classes.Header }>
         <Typography variant={ variant }>{ title }</Typography>
         {
             !noDivider &&
@@ -43,5 +42,5 @@ const Index = ({ title, variant, noDivider }: HeaderProps) => (
     </div>
 );
 
-export const PageHeader = (props: PublicProps) => <Index { ...props } variant="h3" />;
-export const SectionHeader = (props: PublicProps) => <Index { ...props } variant="h5" />;
+export const PageHeader = (props: PublicProps) => <BaseHeader { ...props } variant="h3" />;
+export const SectionHeader = (props: PublicProps) => <BaseHeader { ...props } variant="h5" />;
