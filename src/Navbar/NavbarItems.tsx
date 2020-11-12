@@ -17,9 +17,9 @@
  */
 
 import React from 'react';
-import { NavbarItem } from '../types';
 import { matchPath, NavLink, useLocation } from 'react-router-dom';
-import { Button } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import { NavbarItem } from '../types';
 
 export interface Props {
     isAuth: boolean;
@@ -37,7 +37,7 @@ const NavbarItems = (props: Props) => {
     return (
         <>
             {
-                props.items.map((item, index) => {
+                props.items.map((item) => {
                     const active = matchPath(location.pathname, {
                         path: item.to,
                         exact: item.exact
@@ -50,7 +50,7 @@ const NavbarItems = (props: Props) => {
                     return (
                         <NavLink
                             id={ `navbar-item-${idString}` }
-                            key={ index }
+                            key={ idString }
                             to={ item.to }
                             className={ props.navLinkClass }
                         >

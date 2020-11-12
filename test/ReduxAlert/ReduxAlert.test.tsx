@@ -17,10 +17,10 @@
  */
 
 import React from 'react';
+import { mount, ReactWrapper } from 'enzyme';
 import ReduxAlert, { Props as ReduxAlertProps } from '../../src/ReduxAlert';
 import createTestReduxProvider from '../utils/createTestReduxProvider';
 import createTestComponent from '../utils/createTestComponent';
-import { mount, ReactWrapper } from 'enzyme';
 import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
 const defaultProps: ReduxAlertProps = {
@@ -37,12 +37,12 @@ const defaultStoreState = {
 };
 type StoreStateType = typeof defaultStoreState;
 
-const [TestReduxProvider, storeHandler] = createTestReduxProvider<StoreStateType>(defaultStoreState);
+const [ TestReduxProvider, storeHandler ] = createTestReduxProvider<StoreStateType>(defaultStoreState);
 const TestReduxAlert = createTestComponent<ReduxAlertProps>(defaultProps, ReduxAlert);
 
 const rootDivItem: RenderedItem = {
     selector: 'div#the-alert-container',
-    values: [{}]
+    values: [ {} ]
 };
 
 const collapseItem: RenderedItem = {

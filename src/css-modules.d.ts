@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-declare module "*.scss" {
-    const styles: { [className: string]: string };
+declare module '*.scss' {
+    const styles: { [className: string]: string; };
     export default styles;
 }

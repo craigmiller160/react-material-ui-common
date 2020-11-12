@@ -25,9 +25,10 @@ export interface StoreHandler<State> {
     store?: MockStoreEnhanced<State>;
 }
 
-const createTestReduxProvider = <State extends object>(defaultState: State): [ComponentType<Partial<PropsWithChildren<State>>>, StoreHandler<State>] => {
+const createTestReduxProvider = <State extends object>(defaultState: State):
+    [ComponentType<Partial<PropsWithChildren<State>>>, StoreHandler<State>] => {
     const storeHandler: StoreHandler<State> = {};
-    const createMockStore = configureStore<State>([thunk]);
+    const createMockStore = configureStore<State>([ thunk ]);
 
     const TestReduxProvider = (stateProps: Partial<PropsWithChildren<State>>) => {
         const actualState: State = {
@@ -45,7 +46,7 @@ const createTestReduxProvider = <State extends object>(defaultState: State): [Co
         );
     };
 
-    return [TestReduxProvider, storeHandler];
-}
+    return [ TestReduxProvider, storeHandler ];
+};
 
 export default createTestReduxProvider;

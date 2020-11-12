@@ -31,12 +31,14 @@ const createTestRouter = (defaultOptions: RouterOptions) => (props: Partial<Prop
         ...props
     };
 
+    const { children } = props;
+
     return (
         <MemoryRouter
             initialEntries={ actualOptions.initialEntries }
             initialIndex={ actualOptions.initialIndex }
         >
-            { props.children }
+            { children }
         </MemoryRouter>
     );
 };

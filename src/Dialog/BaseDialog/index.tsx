@@ -47,7 +47,7 @@ const BaseDialog = (props: PropsWithChildren<Props>) => {
         className
     } = props;
 
-    const rootClasses = [styles.BaseDialog, className]
+    const rootClasses = [ styles.BaseDialog, className ]
         .filter((name) => name)
         .join(' ');
 
@@ -68,7 +68,7 @@ const BaseDialog = (props: PropsWithChildren<Props>) => {
                         return (
                             <Button
                                 id={ btnId }
-                                key={ index }
+                                key={ btnId }
                                 color="primary"
                                 onClick={ action.onClick }
                             >

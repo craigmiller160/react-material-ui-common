@@ -17,9 +17,9 @@
  */
 
 import React from 'react';
+import { mount, ReactWrapper } from 'enzyme';
 import NavbarItems, { Props as NavbarItemsProps } from '../../src/Navbar/NavbarItems';
 import createTestComponent from '../utils/createTestComponent';
-import { mount, ReactWrapper } from 'enzyme';
 import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
 import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
@@ -41,7 +41,7 @@ const defaultProps: NavbarItemsProps = {
 };
 
 const defaultRouterOptions: RouterOptions = {
-    initialEntries: ['/one/abc'],
+    initialEntries: [ '/one/abc' ],
     initialIndex: 0
 };
 

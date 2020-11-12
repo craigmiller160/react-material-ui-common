@@ -17,15 +17,15 @@
  */
 
 import React from 'react';
+import { mount, ReactWrapper } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 import Tabs, { Props as TabsProps } from '../../src/Tabs';
 import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
 import createTestComponent from '../utils/createTestComponent';
-import { mount, ReactWrapper } from 'enzyme';
-import { act } from 'react-dom/test-utils';
 import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
 const defaultRouterOptions: RouterOptions = {
-    initialEntries: ['/root/tab1'],
+    initialEntries: [ '/root/tab1' ],
     initialIndex: 0
 };
 
@@ -96,7 +96,7 @@ const tabItems: RenderedItem = {
 
 const switchItem: RenderedItem = {
     selector: 'Switch',
-    values: [{}]
+    values: [ {} ]
 };
 
 const tab1RouteItem: RenderedItem = {

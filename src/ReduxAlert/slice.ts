@@ -30,20 +30,20 @@ const initialState: AlertState = {
     type: 'success'
 };
 
-const showErrorAlert = (state: AlertState, action: PayloadAction<string>) => {
-    state.show = true;
-    state.type = 'error';
-    state.message = action.payload;
+const showErrorAlert = (draft: AlertState, action: PayloadAction<string>) => {
+    draft.show = true;
+    draft.type = 'error';
+    draft.message = action.payload;
 };
 
-const showSuccessAlert = (state: AlertState, action: PayloadAction<string>) => {
-    state.show = true;
-    state.type = 'success';
-    state.message = action.payload;
+const showSuccessAlert = (draft: AlertState, action: PayloadAction<string>) => {
+    draft.show = true;
+    draft.type = 'success';
+    draft.message = action.payload;
 };
 
-const hideAlert = (state: AlertState) => {
-    state.show = false;
+const hideAlert = (draft: AlertState) => {
+    draft.show = false;
 };
 
 export default createSlice({

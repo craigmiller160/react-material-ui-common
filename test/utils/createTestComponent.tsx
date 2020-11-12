@@ -16,8 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import React from 'react';
-import { ComponentType } from 'react';
+import React, { ComponentType } from 'react';
 
 const createTestComponent = <Props extends object>(defaultProps: Props, component: ComponentType<Props>) =>
     (props: Partial<Props>) => {

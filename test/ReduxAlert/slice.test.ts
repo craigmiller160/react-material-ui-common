@@ -16,9 +16,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import alertSlice from '../../src/ReduxAlert/slice';
 import { combineReducers, Store } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
+import alertSlice from '../../src/ReduxAlert/slice';
 
 const rootReducer = combineReducers({
     alert: alertSlice.reducer

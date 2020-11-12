@@ -6,43 +6,35 @@
   "license": "MIT",
   "sideEffects": "false",
   "devDependencies": {
-    "@craigmiller160/eslint-config-cra-extension": "1.2.1",
-    "@types/enzyme": "^3.10.8",
-    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@craigmiller160/web-config": "^2.0.2",
     "@types/react-dom": "^16.9.9",
-    "@types/react-redux": "^7.1.9",
+    "@types/react-redux": "^7.1.11",
     "@types/react-router": "^5.1.8",
     "@types/react-router-dom": "^5.1.6",
-    "@types/redux": "^3.6.0",
     "@types/redux-mock-store": "^1.0.2",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.5",
-    "glob": "^7.1.6",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.6.1",
-    "jest-config": "^26.6.1",
-    "react-dom": "^16.13.1",
     "redux-mock-store": "^1.5.4",
-    "trace-error": "^1.0.3",
-    "ts-jest": "^26.4.3",
-    "typescript": "^4.0.3",
-    "yarn-or-npm": "^3.0.1"
+    "trace-error": "^1.0.3"
   },
   "scripts": {
-    "build": "node scripts/clean.js && tsc && node scripts/copy-resources.js",
-    "lint": "eslint -c eslint.config.js src test --no-error-on-unmatched-pattern",
-    "test": "jest",
-    "validate": "yon run lint && yon run test"
+    "build": "web-config-scripts buildTSLib",
+    "lint": "web-config-scripts lint",
+    "test": "web-config-scripts test",
+    "validate": "web-config-scripts validate"
   },
   "files": [
-    "lib"
+    "lib",
+    ".yalc"
   ],
+  "resolutions": {
+    "es-abstract": "^1.18.0-next.1"
+  },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@reduxjs/toolkit": "^1.4.0",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-redux": "^7.2.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",

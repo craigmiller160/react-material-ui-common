@@ -17,10 +17,13 @@
  */
 
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { NavbarItem } from '../types';
-import { Drawer, ListItem, ListItemText, Typography } from '@material-ui/core';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import Drawer from '@material-ui/core/Drawer';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Typography from '@material-ui/core/Typography';
 import { matchPath, NavLink, useLocation } from 'react-router-dom';
+import { NavbarItem } from '../types';
 import styles from './MobileMenu.module.scss';
 
 export interface Props {
@@ -74,7 +77,7 @@ const MobileMenu = (props: Props) => {
                 </Typography>
             </NavLink>
             {
-                props.isAuth && props.items.map((item, index) => {
+                props.isAuth && props.items.map((item) => {
                     const isMatch: boolean = !!matchPath(location.pathname, {
                         path: item.to,
                         exact: item.exact
@@ -90,7 +93,7 @@ const MobileMenu = (props: Props) => {
                     return (
                         <ListItem
                             id={ `navbar-mobile-item-${idString}` }
-                            key={ index }
+                            key={ idString }
                             className={ itemClass }
                             onClick={ props.handleMenuClose }
                         >
