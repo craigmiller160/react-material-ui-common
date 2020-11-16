@@ -20,10 +20,14 @@ import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { act } from 'react-dom/test-utils';
+import {
+    createTestComponent,
+    createTestRouter,
+    renderingValidator,
+    RenderedItem,
+    RouterOptions
+} from '@craigmiller160/react-test-utils';
 import Navbar, { Props as NavbarProps } from '../../src/Navbar';
-import createTestComponent from '../utils/createTestComponent';
-import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
-import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
 jest.mock('@material-ui/core/useMediaQuery', () => jest.fn());
 

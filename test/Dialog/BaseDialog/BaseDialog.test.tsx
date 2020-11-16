@@ -18,9 +18,9 @@
 
 import React, { PropsWithChildren } from 'react';
 import { mount, ReactWrapper } from 'enzyme';
+import { createTestComponent, renderingValidator, RenderedItem } from '@craigmiller160/react-test-utils';
+
 import BaseDialog, { Props as BaseDialogProps } from '../../../src/Dialog/BaseDialog';
-import { createTestComponent } from '@craigmiller160/react-test-utils';
-import { renderingValidator, RenderedItem } from '@craigmiller160/react-test-utils';
 
 const actionClick = jest.fn();
 

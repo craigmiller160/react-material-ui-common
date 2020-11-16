@@ -18,9 +18,8 @@
 
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
+import { createTestComponent, renderingValidator, RenderedItem } from '@craigmiller160/react-test-utils';
 import { PageHeader, SectionHeader, PublicProps as HeaderProps } from '../../src/Header';
-import createTestComponent from '../utils/createTestComponent';
-import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
 const defaultProps: HeaderProps = {
     title: 'TheHeader',

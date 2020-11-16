@@ -18,10 +18,14 @@
 
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
+import {
+    createTestComponent,
+    createTestRouter,
+    renderingValidator,
+    RenderedItem,
+    RouterOptions
+} from '@craigmiller160/react-test-utils';
 import NavbarItems, { Props as NavbarItemsProps } from '../../src/Navbar/NavbarItems';
-import createTestComponent from '../utils/createTestComponent';
-import createTestRouter, { RouterOptions } from '../utils/createTestRouter';
-import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
 const defaultProps: NavbarItemsProps = {
     isAuth: true,

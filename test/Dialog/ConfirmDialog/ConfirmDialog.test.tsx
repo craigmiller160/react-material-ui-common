@@ -18,9 +18,8 @@
 
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
+import { createTestComponent, renderingValidator, RenderedItem } from '@craigmiller160/react-test-utils';
 import ConfirmDialog, { Props as ConfirmDialogProps } from '../../../src/Dialog/ConfirmDialog';
-import createTestComponent from '../../utils/createTestComponent';
-import renderingValidator, { RenderedItem } from '../../utils/renderingValidator';
 
 const onConfirm = jest.fn();
 const onCancel = jest.fn();

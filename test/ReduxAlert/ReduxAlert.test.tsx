@@ -18,10 +18,13 @@
 
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
+import {
+    createTestComponent,
+    createTestReduxProvider,
+    renderingValidator,
+    RenderedItem
+} from '@craigmiller160/react-test-utils';
 import ReduxAlert, { Props as ReduxAlertProps } from '../../src/ReduxAlert';
-import createTestReduxProvider from '../utils/createTestReduxProvider';
-import createTestComponent from '../utils/createTestComponent';
-import renderingValidator, { RenderedItem } from '../utils/renderingValidator';
 
 const defaultProps: ReduxAlertProps = {
     id: 'the-alert',
