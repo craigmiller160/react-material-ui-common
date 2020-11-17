@@ -960,8 +960,10 @@
     redux-mock-store "^1.5.4"
     trace-error "^1.0.3"
 
-"@craigmiller160/web-config@file:.yalc/@craigmiller160/web-config":
-  version "2.2.0-beta"
+"@craigmiller160/web-config@^2.2.0":
+  version "2.2.0"
+  resolved "http://localhost:30000/@craigmiller160%2fweb-config/-/web-config-2.2.0.tgz#7811524e0dcdeb2b15ce4655c924fe8195da453d"
+  integrity sha512-OIeSXuLDBZVwIdwb83wUecq9waXo1ZI5vSFLJLYNsFD7vD8YK9hM+2id2pRUB6hTIM35orPKNML5cn3Foy6UEg==
   dependencies:
     "@babel/core" "^7.12.3"
     "@babel/plugin-transform-modules-commonjs" "^7.12.1"
