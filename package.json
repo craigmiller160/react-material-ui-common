@@ -1,17 +1,17 @@
 {
   "name": "@craigmiller160/react-material-ui-common",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "publishConfig": {
-    "registry": "http://craigpc:30003/repository/npm-private/"
+    "registry": "https://craigmiller160.ddns.net:30003/repository/npm-private/"
   },
   "author": "craigmiller160",
   "license": "GPLv3",
   "sideEffects": "false",
   "devDependencies": {
-    "@craigmiller160/react-test-utils": "^2.0.1",
-    "@craigmiller160/react-web-config": "^2.8.1",
+    "@craigmiller160/react-test-utils": "^2.1.2",
+    "@craigmiller160/react-web-config": "^2.8.2",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.11",
