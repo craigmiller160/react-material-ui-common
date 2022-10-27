@@ -21,13 +21,13 @@
     "module": "es2015"
   },
   "include": [
-    "/home/craig/Development/Libraries/react-material-ui-common/src/**/*",
-    "/home/craig/Development/Libraries/react-material-ui-common/test/**/*"
+    "/Users/craigmiller/Development/Libraries/react-material-ui-common/src/**/*",
+    "/Users/craigmiller/Development/Libraries/react-material-ui-common/test/**/*"
   ],
   "exclude": [
-    "/home/craig/Development/Libraries/react-material-ui-common/node_modules",
-    "/home/craig/Development/Libraries/react-material-ui-common/lib",
-    "/home/craig/Development/Libraries/react-material-ui-common/build",
-    "/home/craig/Development/Libraries/react-material-ui-common/.yalc"
+    "/Users/craigmiller/Development/Libraries/react-material-ui-common/node_modules",
+    "/Users/craigmiller/Development/Libraries/react-material-ui-common/lib",
+    "/Users/craigmiller/Development/Libraries/react-material-ui-common/build",
+    "/Users/craigmiller/Development/Libraries/react-material-ui-common/.yalc"
   ]
 }
