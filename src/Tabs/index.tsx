@@ -89,6 +89,7 @@ const Tabs = (props: Props) => {
                             key={ tab.path }
                             path={ `${match.path}${tab.path}` }
                             exact
+                            // @ts-ignore
                             component={ tab.component }
                         />
                     ))
